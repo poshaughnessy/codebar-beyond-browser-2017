@@ -1,0 +1,1454 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Browser (Codebar)</title>
+  <style type="text/css">
+    /*
+ * Originally based on github.com/sjaakvandenberg/cleaver-dark
+ */
+
+/* Local fonts */
+
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Play/Play-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Play';
+  font-style: normal;
+  font-weight: 700;
+  src: url('fonts/Play/Play-Bold.ttf') format('truetype');
+}
+
+
+/* Theme Styles */
+body {
+  font-family: 'Play', 'Helvetica', sans-serif;
+  font-size: 100%;
+  text-align: center;
+  overflow: hidden;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Presentation Styles */
+.slide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background-color: #222;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-content {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  padding: 1em;
+  box-sizing: border-box;
+  margin: 0 auto;
+  font-size: 120%;
+  line-height: 1.375;
+  overflow: hidden;
+}
+
+.valign-top {
+  align-items: flex-start;
+}
+
+.valign-bottom {
+  align-items: flex-end;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.contact p {
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  max-height: calc(100vh - 3em); /* Allow space for captions by default */
+}
+
+.controls {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.arrow {
+  float: left;
+  height: 0;
+  width: 0;
+  margin-right: 15px;
+  border: 15px solid #272822;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.prev {
+  border-top-color: transparent;
+  border-right-width: 25px;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
+  border-left-width: 0;
+}
+
+.prev:hover {
+  border-top-color: transparent;
+  border-right-width: 25px;
+  border-bottom-color: transparent;
+  border-left-width: 0;
+  border-left-color: #272822;
+}
+
+.next {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-right-width: 0;
+  border-bottom-color: transparent;
+  border-left-width: 25px;
+}
+
+.next:hover {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-right-width: 0;
+  border-left-width: 25px;
+  border-left-color: #272822;
+}
+
+h1, h2 {
+  margin: 0 0 0.25em 0;
+  font-family: 'Play';
+  font-weight: bold;
+  transform: scaleX(1.05);
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.6);
+}
+
+h1 {
+  font-size: 300%;
+  line-height: 1.5;
+}
+
+h2 {
+  font-size: 175%;
+  line-height: 1.4;
+}
+
+h2:last-child {
+  margin-bottom: 0;
+}
+
+h3 {
+  margin: 0.5em 0 1em 0;
+  font-size: 150%;
+  line-height: 1.4;
+  border-bottom: none;
+  font-weight: normal;
+}
+
+h4 {
+  margin: 0.5em 0 1em 0;
+  font-size: 120%;
+  line-height: 1.3;
+  border-bottom: none;
+  font-weight: normal;
+}
+
+ul,
+ol {
+  margin: 0.5 0 1em 0;
+  padding: 0 0 0 45px;
+  line-height: 1.4;
+  font-size: 1.15em;
+  display: inline-block;
+}
+
+li {
+  text-align: left;
+  margin-bottom: 0.5em;
+  font-size: 1.2em;
+}
+
+li code {
+  font-size: 0.9em;
+}
+
+.long-list li {
+  font-size: 1em;
+}
+
+blockquote {
+  font-style: italic;
+  font-size: 1.75em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0;
+}
+
+.left {
+  float: left;
+  width: 48%;
+}
+
+.right {
+  float: right;
+  width: 48%;
+}
+
+p {
+  margin: 0 0 1em 0;
+}
+
+a {
+  text-decoration: none;
+  color: #987fff;
+}
+
+a:hover {
+  color: #987fff;
+  text-decoration: underline;
+}
+
+pre {
+  font-size: 75%;
+  line-height: 1.3;
+  text-align: left;
+  padding: 1em;
+  margin-bottom: 1em;
+  background: #fafafa;
+}
+
+table td,
+table th {
+  padding-right: 3em;
+  text-align: left;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+}
+
+.progress-bar {
+  height: 3px;
+  width: 0;
+  background-color: #a6e22e;
+  -webkit-transition: width .15s ease-out;
+  -moz-transition: width .15s ease-out;
+  -o-transition: width .15s ease-out;
+  transition: width .15s ease-out;
+}
+
+.hidden {
+  display: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.caption {
+  font-size: 0.7em;
+  margin-top: 0.5em;
+  font-weight: normal;
+  text-shadow: none;
+  -webkit-text-stroke-width: 0;
+  color: #aaa;
+  clear: both;
+}
+
+.credits {
+  margin-top: 5em;
+  font-size: 0.5em;
+  font-weight: normal;
+  text-shadow: none;
+  -webkit-text-stroke-width: 0;
+}
+
+/* Quote by... */
+blockquote + p {
+  font-size: 0.9em;
+  margin-top: 1em;
+}
+
+/* Code Highlighting */
+code {
+  font-family: Courier, sans-serif;
+  border-radius: 3px;
+  font-weight: 500;
+  text-shadow: none;
+  -webkit-text-stroke-width: 0;
+}
+
+pre {
+  display: inline-block;
+  border-radius: 1em;
+}
+
+pre code {
+  display: block;
+  color: #444;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  overflow-y: hidden;
+  background: transparent;
+}
+
+pre .tag,
+pre .tag .title,
+pre .keyword,
+pre .literal,
+pre .change,
+pre .winutils,
+pre .flow,
+pre .lisp .title,
+pre .clojure .built_in,
+pre .nginx .title,
+pre .tex .special {
+  color: #704dff;
+}
+
+pre code .constant {
+  color: #66d9ef;
+}
+
+pre .class .title {
+  color: #fafafa;
+}
+
+pre .attribute,
+pre .symbol,
+pre .symbol .string,
+pre .value,
+pre .regexp {
+  color: #bf79db;
+}
+
+pre .tag .value,
+pre .string,
+pre .subst,
+pre .title,
+pre .haskell .type,
+pre .preprocessor,
+pre .ruby .class .parent,
+pre .built_in,
+pre .sql .aggregate,
+pre .django .template_tag,
+pre .django .variable,
+pre .smalltalk .class,
+pre .javadoc,
+pre .django .filter .argument,
+pre .smalltalk .localvars,
+pre .smalltalk .array,
+pre .attr_selector,
+pre .pseudo,
+pre .addition,
+pre .stream,
+pre .envvar,
+pre .apache .tag,
+pre .apache .cbracket,
+pre .tex .command,
+pre .prompt {
+  color: #987fff;
+}
+
+pre .comment,
+pre .java .annotation,
+pre .python .decorator,
+pre .template_comment,
+pre .pi,
+pre .doctype,
+pre .deletion,
+pre .shebang,
+pre .apache .sqbracket,
+pre .tex .formula {
+  color: #aaa;
+}
+
+pre .keyword,
+pre .literal,
+pre .css .id,
+pre .phpdoc,
+pre .title,
+pre .haskell .type,
+pre .vbscript .built_in,
+pre .sql .aggregate,
+pre .rsl .built_in,
+pre .smalltalk .class,
+pre .diff .header,
+pre .chunk,
+pre .winutils,
+pre .bash .variable,
+pre .apache .tag,
+pre .tex .special,
+pre .request,
+pre .status {
+  /* font-weight: 600; */
+}
+
+pre .coffeescript .javascript,
+pre .javascript .xml,
+pre .tex .formula,
+pre .xml .javascript,
+pre .xml .vbscript,
+pre .xml .css,
+pre .xml .cdata {
+  opacity: .5;
+}
+
+.hljs-keyword {
+  color: #704dff;
+}
+
+.hljs-string {
+  color: #987fff;
+}
+
+.hljs-title {
+  color: #673280;
+}
+
+.hljs-comment {
+  color: #777;
+}
+
+/* Media Queries */
+/* 640 x 480 is the default (1em) */
+
+/* 800 x 600 */
+@media (min-width: 800px) and (min-height: 600px) {
+    body {
+        font-size: 125%;
+    }
+}
+
+/* 1024 x 768 */
+@media (min-width: 1024px) and (min-height: 768px) {
+    body {
+        font-size: 160%;
+    }
+}
+
+/* 1152 x 864 */
+@media (min-width: 1152px) and (min-height: 864px) {
+    body {
+        font-size: 180%;
+    }
+}
+
+/* 1280 x 960 */
+@media (min-width: 1280px) and (min-height: 960px) {
+    body {
+        font-size: 200%;
+    }
+}
+
+/* 1440 x 1080 */
+@media (min-width: 1440px) and (min-height: 1080px) {
+    body {
+        font-size: 225%;
+    }
+}
+
+/* 1600 x 1200 */
+@media (min-width: 1600px) and (min-height: 1200px) {
+    body {
+        font-size: 250%;
+    }
+}
+
+/* 1920 x 1440 */
+@media (min-width: 1920px) and (min-height: 1440px) {
+    body {
+        font-size: 300%;
+    }
+}
+
+/* Override theme */
+@media (max-width: 850px) {
+  img {
+    width: auto;
+  }
+}
+
+/* Print styles used for saving to PDF */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+  .slide {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    display: flex;
+    page-break-after: always;
+    background-color: #fff;
+  }
+}
+
+/* Common slide contents */
+.contact {
+  margin-top: 3em;
+}
+
+.credit {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.5em;
+  color: #666;
+}
+
+.credit a {
+  color: #7a7a7a;
+}
+
+.corner-logos {
+  position: absolute;
+  bottom: 25px;
+  right: 10px;
+}
+
+.corner-logos img {
+  max-width: 100px;
+}
+
+/* For background images so we can apply filters */
+.slide {
+  overflow: auto;
+  position: relative;
+}
+/* Vignette effect */
+.slide.bg-fade:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  display: block;
+  box-shadow: inset 0 0 12em #000;
+  width: 100%;
+  height: 100%;
+}
+/* Background image */
+.slide:after {
+  content: "";
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 100%;
+}
+/* Background image to render things on top of */
+.slide.bg-fade:after {
+  filter: blur(2px) grayscale(0.5) brightness(0.2);
+}
+.slide-content {
+  z-index: 1;
+}
+
+/* Slide specific styles here */
+
+.iframe .slide-content {
+  height: 100%;
+  padding: 0;
+}
+
+#slide-1 h1 {
+  margin-top: 0;
+}
+
+#slide-1 h2 {
+  font-style: italic;
+}
+
+#slide-1 h3 {
+  color: #aaa;
+}
+
+#slide-1 .contact {
+  margin-top: 6em;
+}
+
+.slide.bg-white:after {
+  background-color: #fff;
+}
+
+.slide.bg-buzz1:after {
+  background-image: url(images/buzz-flickr_armadillo444.jpg);
+  filter: blur(2px) grayscale(0.5) brightness(0.175);
+}
+
+.slide.bg-buzz2:after {
+  background-image: url(images/buzz-flickr_robertmitchem.jpg);
+}
+
+.slide.bg-buzz3:after {
+  background-image: url(images/buzz-flickr_brandonserna.jpg);
+}
+
+.slide.bg-buzz4:after {
+  background-image: url(images/buzz-flickr_rafaelromero.jpg);
+}
+
+.slide.bg-buzz5:after {
+  background-image: url(images/buzz-flickr_kevinharber.jpg);
+}
+
+.slide.bg-buzz6:after {
+  background-image: url(images/buzz-flickr_payayita.jpg);
+}
+
+.slide.bg-toy-story-alien:after {
+  background-image: url(images/toy-story-alien-flickr_peterdutton.jpg);
+}
+
+.slide.bg-buzz-laser:after {
+  background-image: url(images/buzz-laser-flickr_joanne_lummy.jpg);
+}
+
+.slide.bg-buzz-bye:after {
+  background-image: url(images/buzz-flickr_bridgettewynn.jpg);
+}
+
+.slide.bg-2017:after {
+  background-image: url(images/new-years-eve-1664737_1920.jpg);
+}
+
+.slide.bg-iphone-launch:after {
+  background-image: url(images/Steve_Jobs_presents_iPhone.jpg);
+}
+
+.slide.bg-pwarocks {
+  background-color: #222;
+}
+
+.slide.bg-outweb {
+  background-color: #fafafa;
+}
+
+.slide.bg-best-of-both:after {
+  background-image: url(images/hovis-best-of-both.jpg);
+  filter: blur(2px) grayscale(0.5) brightness(0.125);
+}
+
+.slide.bg-safari:after {
+  background-image: url(images/safari-flickr_triciahealey.jpg);
+  filter: blur(2px) grayscale(0.5) brightness(0.22);
+}
+
+.slide.bg-offline:after {
+  background-image: url(images/ethernet-flickr_wikidave.jpg);
+}
+
+.slide.bg-aframe:after {
+  background-color: #eee;
+  background-image: url(images/aframe-basic.png);
+  background-position-y: bottom;
+}
+
+.bg-buzz-laser h4 {
+  margin-top: 1.5em;
+  font-size: 1.1em;
+}
+
+.beyond h1,
+.beyond-small h3 {
+  margin-bottom: 0;
+  line-height: 1.3em;
+}
+
+.beyond h2,
+.beyond-small h3,
+.progressive-enhancement h3 {
+  color: #987fff;
+}
+
+.progressive-enhancement h2 {
+  font-size: 2.2em;
+}
+
+.progressive-enhancement h3 {
+  margin-top: 0;
+  font-size: 1.1em;
+}
+
+.progressive-enhancement h4 {
+  font-size: 1em; 
+  margin: 1.5em 0 0 0;
+}
+
+.beyond h4,
+.beyond-small h4 {
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.beyond h4:nth-of-type(2) {
+  margin: 0;
+}
+
+.get-involved h1 {
+  color: #987fff;
+  margin-bottom: 1em;
+}
+
+.get-involved h2 {
+  color: #fff;
+}
+
+.get-involved h4 {
+  font-style: normal;
+  margin-bottom: 0.5em;
+}
+
+.img-with-caption h4 {
+  margin-top: 0;
+}
+
+.img-with-caption p {
+  margin: 0;
+}
+
+.img-with-caption img {
+  max-height: calc(100vh - 4em);
+}
+
+.grey-out {
+  filter: grayscale(1);
+}
+
+  </style>
+  <link rel="icon" href="images/favicon.png" type=”image/png">
+</head>
+<body>
+    <div class="progress">
+    <div class="progress-bar"></div>
+  </div>
+
+  <div class="slide  bg-buzz1 bg-fade" id="slide-1">
+    <section class="slide-content"><h1 id="beyond-the-browser">Beyond the Browser</h1>
+<h2 id="pwas-the-future-of-web-apps">PWAs &amp; the future of web apps</h2>
+<h3 id="codebar-feb-2017">Codebar, Feb 2017</h3>
+<div class="contact">
+  <p>Peter O&#39;Shaughnessy</p>
+  <p><a href="https://twitter.com/poshaughnessy">@poshaughnessy</a> &middot; <a href="https://twitter.com/samsunginternet">@samsunginternet</a></p>
+</div>
+
+<div class="credit"><a href="https://www.flickr.com/photos/armadillo444/">Carlos</a> via <a href="https://www.flickr.com/photos/armadillo444/2901378790">Flickr</a></div>
+
+<!-- TODO include later? -->
+<!--![Samsung Internet icon on homescreen](images/samsung-internet-home.png)-->
+<!--![Snapwat](images/snapwat.png)--></section>
+  </div>
+  <div class="slide hidden  bg-2017" id="slide-2">
+    <section class="slide-content"><div class="credit"><a href="https://pixabay.com/en/new-year-s-eve-fireworks-2017-1664737/">pixabay</a></div></section>
+  </div>
+  <div class="slide hidden  bg-iphone-launch" id="slide-3">
+    <section class="slide-content"><div class="credit"><a href="https://commons.wikimedia.org/wiki/File:Steve_Jobs_presents_iPhone.jpg">Wikimedia</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-4">
+    <section class="slide-content"><p><img src="images/internet_usage_2009_2016_ww.png" alt="StatCounter mobile vs desktop graph"></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-5">
+    <section class="slide-content"><p><img src="images/xkcd_mac_pc.png" alt="xkcd cartoon, Mac/PC"></p>
+<div class="credit"><a href="http://xkcd.com/934/">xkcd</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-6">
+    <section class="slide-content"><p><img src="images/address-book.png" alt="Address book access"></p>
+<div class="credit"><a href="http://thenextweb.com/mobile/2012/02/11/following-paths-contact-fiasco-instagram-silently-adds-a-contact-list-access-prompt/">The Next Web</a></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-7">
+    <section class="slide-content"><p><img src="images/comscore-time-spent.png" alt="comScore time spent"></p>
+<div class="caption"><a href="http://venturebeat.com/2013/04/03/the-mobile-war-is-over-and-the-app-has-won-80-of-mobile-time-spent-in-apps/">Reports</a> <a href="http://flurrymobile.tumblr.com/post/127638842745/seven-years-into-the-mobile-revolution-content-is">suggest</a> 80%-90% of time is spent in apps</div></section>
+  </div>
+  <div class="slide hidden" id="slide-8">
+    <section class="slide-content"><p><img src="images/comscore-app-downloads.png" alt="comScore app downloads"></p>
+<div class="credit"><a href="http://www.comscore.com/Insights/Presentations-and-Whitepapers/2016/The-2016-US-Mobile-App-Report">comScore</a> via <a href="http://www.recode.net/2016/9/16/12933780/average-app-downloads-per-month-comscore">recode.net</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-9">
+    <section class="slide-content"><p><img src="images/comscore-mobile-web-crop.png" alt="comScore mobile web reach"></p>
+</section>
+  </div>
+  <div class="slide hidden  bg-best-of-both bg-fade" id="slide-10">
+    <section class="slide-content"><div class="left">
+<h2> Best of web 🌎</h2>
+<ul>
+<li>Multi-platform</li>
+<li>Frictionless</li>
+<li>Discoverable</li>
+<li>Open</li>
+</ul>
+</div>
+
+<div class="right">
+<h2> Best of apps  📱</h2>
+<ul>
+<li>Add to Home Screen</li>
+<li>Offline &amp; instant load</li>
+<li>Push notifications</li>
+<li>Hardware integration</li>
+</ul>
+</div>
+
+<!-- > &ldquo;PWAs combine the best of web & the best of apps&rdquo; 💯-->
+
+<div class="credit"><a href="http://www.morrisqualitybakers.co.uk/goods/hovis-best-of-both-thick/">Morris Quality Bakers</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-11">
+    <section class="slide-content"><p><img src="images/pwa-logo.jpg" alt="Progressive Web Apps logo"></p>
+<!-- > &ldquo;PWAs are all about removing friction&rdquo; 🏎--></section>
+  </div>
+  <div class="slide hidden" id="slide-12">
+    <section class="slide-content"><p><img src="images/web-native-parity.png" alt="Web nearing parity with native"></p>
+<div class="credit"><a href="https://www.youtube.com/watch?v=YJwrBbze_Ec">What Comes Next For The Web? - Paul Kinlan</a></div></section>
+  </div>
+  <div class="slide hidden  bg-white" id="slide-13">
+    <section class="slide-content"><p><a href="https://twitter.com/nicoinch/status/745216197004754944"><img src="images/pwa-dev-summit.png" alt="Browser representation at PWA Dev Summit"></a></p>
+</section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-14">
+    <section class="slide-content"><p><a href="https://pwa.rocks"><img src="images/pwa-rocks.png" alt="pwa.rocks"></a></p>
+<div class="caption"><a href="https://pwa.rocks">pwa.rocks</a></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-15">
+    <section class="slide-content"><p><a href="https://outweb.io"><img src="images/outweb.png" alt="outweb.io"></a></p>
+<div class="caption"><a href="https://outweb.io">outweb.io</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-16">
+    <section class="slide-content"><p><img src="images/twitter-sw.png" alt="Twitter service worker"></p>
+</section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-17">
+    <section class="slide-content"><p><a href="https://inspirehub.ihubapp.org/stories/41314"><img src="images/inspirehub.jpg" alt="Inspire Hub"></a></p>
+<div class="caption"><a href="https://inspirehub.ihubapp.org/stories/41314">&ldquo;PWA Technology helped my community following a natural disaster&rdquo; - InspireHub</a></div></section>
+  </div>
+  <div class="slide hidden  bg-buzz2 bg-fade beyond" id="slide-18">
+    <section class="slide-content"><h2 id="beyond-the-browser-tab">Beyond the browser tab</h2>
+<h4 id="with">with</h4>
+<h1 id="service-workers">Service Workers</h1>
+<div class="credit"><a href="https://www.flickr.com/photos/29290711@N04/">Robert Mitchem</a> via <a href="https://www.flickr.com/photos/29290711@N04/4299610660/in/photolist-7xWCsh-4p7WUc-c9SA1-4p7WUk-eekmjY-5wYXcL-eekpus-eTmXrz-qqcft4-eeeE7k-94caDx-FrAo5-c9RX3-c9Snm-nbYsTe-e3un1X-8fAVES-8fATZy-8fAVeE-8F2Rhe-8fAX5m-8fAUPU-bu5ZkE-8fxGyK-8fxGLk-8fxEvV-8fAVQN-8fAV2f-8fAUCJ-6JP7C2-c9Tti-c9T3i-c9TkX-PePL8-c9T9A-c9TfB-c9Stj-6LpjA7-c9THy-c9S9V-c9RAT-8vgbRB-8hBKqd-8uLTaQ-c9S3P-6LpjEb-72bsgt-c9SG9-c9TAV-c9SNK">Flickr</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-19">
+    <section class="slide-content"><video controls width="80%">
+  <source src="videos/snapwat-offline-demo.webm"/>
+  <source src="videos/snapwat-offline-demo.mp4"/>
+</video>
+
+<div class="caption"><a href="snapw.at"><a href="https://snapw.at">https://snapw.at</a></a></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-20">
+    <section class="slide-content"><p><a href="https://jakearchibald.github.io/isserviceworkerready/"><img src="images/isserviceworkerready.png" alt="isserviceworkerready"></a></p>
+<div class="caption"><a href="https://jakearchibald.github.io/isserviceworkerready/">jakearchibald.github.io/isserviceworkerready/</a></div></section>
+  </div>
+  <div class="slide hidden  bg-safari bg-fade beyond" id="slide-21">
+    <section class="slide-content"><h2 id="what-about">What about</h2>
+<h1 id="safari-">Safari?</h1>
+</section>
+  </div>
+  <div class="slide hidden  bg-buzz-laser progressive-enhancement bg-fade" id="slide-22">
+    <section class="slide-content"><h2 id="progressive-enhancement">Progressive enhancement</h2>
+<h4 id="where-service-workers-are-available-you-can-think-of-the">Where service workers are available, you can think of the</h4>
+<h3 id="-network-as-an-enhancement-"><em>network</em> as an enhancement!</h3>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-23">
+    <section class="slide-content"><p><img src="images/chrome-service-worker-internals.png" alt="Chrome service worker internals"></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-24">
+    <section class="slide-content"><pre><code class="lang-javascript">navigator.serviceWorker.register(<span class="hljs-string">'/service-worker.js'</span>)
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">registration</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Registration successful'</span>, registration.scope);
+  })
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Failed - service worker not installed'</span>, error);
+  });</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-25">
+    <section class="slide-content"><pre><code class="lang-javascript"><span class="hljs-comment">// service-worker.js</span>
+
+<span class="hljs-comment">// NB. URLs, not filepaths!</span>
+<span class="hljs-keyword">var</span> RESOURCES = [<span class="hljs-string">'/images/logo.png'</span>, ...];
+
+self.addEventListener(<span class="hljs-string">'install'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">onInstall</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> caches.open(CACHE_NAME)
+      .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">cache</span>) </span>{
+        <span class="hljs-keyword">return</span> cache.addAll(RESOURCES);
+      });
+  }
+);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-26">
+    <section class="slide-content"><pre><code class="lang-javascript">self.addEventListener(<span class="hljs-string">'install'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-comment">// Waits for clients using old SWs to be closed and/or </span>
+  <span class="hljs-comment">// `event.waitUntil()`, unless `skipWaiting()`.</span>
+});
+
+self.addEventListener(<span class="hljs-string">'activate'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-comment">// Good time to clear out old caches.</span>
+});
+
+self.addEventListener(<span class="hljs-string">'fetch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-comment">// Intercepted a fetch!</span>
+  event.respondWith(<span class="hljs-keyword">new</span> Response(<span class="hljs-string">'Hello world!'</span>));
+});</code></pre>
+<div class="caption"><a href="https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers">Using Service Workers - MDN</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-27">
+    <section class="slide-content"><h2 id="don-t-precache-too-much-on-install">Don&#39;t precache too much on install</h2>
+<pre><code class="lang-javascript"><span class="hljs-comment">// App shell resources</span>
+<span class="hljs-keyword">var</span> RESOURCES = [
+  <span class="hljs-string">'/js/app.js'</span>,
+  <span class="hljs-string">'/css/styles.css'</span>,
+  <span class="hljs-string">'/images/logo.png'</span>, 
+  ...
+];
+
+...
+cache.addAll(RESOURCES);</code></pre>
+<!--## Rendering preferences (in order) 👇-->
+
+<!--1. SSR app shell & initial page. CSR takes over.-->
+<!--1. SSR only app shell. JS fetches rest on load.-->
+<!--1. SSR full page.-->
+<!--1. CSR full page.--></section>
+  </div>
+  <div class="slide hidden" id="slide-28">
+    <section class="slide-content"><h2 id="check-lighthouse">Check Lighthouse</h2>
+<p><img src="images/lighthouse-report.png" alt="Lighthouse" width="80%"/></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-29">
+    <section class="slide-content"><h2 id="be-wary-of-waiting-for-fetch-fail">Be wary of waiting for fetch fail</h2>
+<pre><code class="lang-javascript">self.addEventListener(<span class="hljs-string">'fetch'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+
+  <span class="hljs-keyword">var</span> responsePromise = fetch(event.request)
+    .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">response</span>) </span>{
+      <span class="hljs-comment">// Cache response if appropriate here...      </span>
+      <span class="hljs-keyword">return</span> response;
+    })
+    .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err</span>) </span>{
+      <span class="hljs-comment">// Fetch failed - maybe after a while!</span>
+      <span class="hljs-keyword">return</span> caches.match(event.request);
+    });
+
+  event.respondWith(responsePromise);
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-30">
+    <section class="slide-content"><h2 id="sw-toolbox">sw-toolbox</h2>
+<ul>
+<li>“network first”, then fallback to cache</li>
+</ul>
+<pre><code class="lang-javascript">importScripts(<span class="hljs-string">'/sw-toolbox/sw-toolbox.js'</span>);
+
+toolbox.router.get(<span class="hljs-string">'/images/*'</span>, toolbox.networkFirst, {
+    networkTimeoutSeconds: <span class="hljs-number">10</span>
+});</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-31">
+    <section class="slide-content"><ul>
+<li>“cache first”, then fallback to network</li>
+</ul>
+<pre><code class="lang-javascript">toolbox.router.get(<span class="hljs-string">'/images/*'</span>, toolbox.cacheFirst);</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-32">
+    <section class="slide-content"><ul>
+<li>“fastest” — serve whichever comes back first</li>
+</ul>
+<pre><code class="lang-javascript">toolbox.router.get(<span class="hljs-string">'/profile'</span>, toolbox.fastest);</code></pre>
+<p><div></div></p>
+<ul>
+<li>“network only”</li>
+<li>“cache only”</li>
+</ul>
+<!--## &lt;a download&gt; requests bypass SW-->
+<!--<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=468227#c13"><img src="images/chromium-bug.png" alt="Chromium bug" width="75%"/></a>-->
+<!--<div class="corner-logos">![Chrome](images/chrome.png) ![Samsung Internet](images/sbrowser5.0.png)</div>--></section>
+  </div>
+  <div class="slide hidden  bg-buzz3 bg-fade beyond" id="slide-33">
+    <section class="slide-content"><h2 id="beyond-regular-engagement">Beyond regular engagement</h2>
+<h4 id="with">with</h4>
+<h1 id="push-notifications">Push Notifications</h1>
+<div class="credit"><a href="https://www.flickr.com/photos/54732806@N03/">Brandon Serna</a> via <a href="https://www.flickr.com/photos/54732806@N03/5378370232/">Flickr</a></div>
+
+<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"> <img src="images/sbrowser5.0.png" alt="Samsung Internet"> <img src="images/firefox.png" alt="Firefox"></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-34">
+    <section class="slide-content"><p><img src="images/guardian-push-notifications.jpg" alt="Guardian live election web push notifications"></p>
+<div class="caption"><a href="https://medium.com/the-guardian-mobile-innovation-lab/building-the-guardians-live-elections-notifications-87bafbcf510">&ldquo;Building the Guardian’s Live Elections Notifications&rdquo;</a></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-35">
+    <section class="slide-content"><p><img src="images/podle-push-notification.png" alt="Podle push notification"></p>
+<div class="caption"><a href="https://podle.audio">podle.audio</a></div>
+
+<!-- [bit.ly/web-fundamentals-push-notifications](http://bit.ly/web-fundamentals-push-notifications) --></section>
+  </div>
+  <div class="slide hidden" id="slide-36">
+    <section class="slide-content"><p><img src="images/podle-push-debug.png" alt="Podle push debugging"></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-37">
+    <section class="slide-content"><p><img src="images/podle-push-debug2.png" alt="Podle push debugging"></p>
+</section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-38">
+    <section class="slide-content"><p><img src="images/push-bad.jpg" alt="Push notification anti-pattern"></p>
+<div class="caption"><em>Please</em> keep it <a href="https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/">timely, relevant and precise!</a></div></section>
+  </div>
+  <div class="slide hidden  bg-buzz4 bg-fade beyond" id="slide-39">
+    <section class="slide-content"><h2 id="beyond-the-digital-world">Beyond the digital world</h2>
+<h4 id="with">with</h4>
+<h1 id="physical-web">Physical Web</h1>
+<h4 id="-">&amp;</h4>
+<h1 id="web-bluetooth">Web Bluetooth</h1>
+<div class="credit"><a href="https://www.flickr.com/photos/35663018@N03/">Rafael Romero</a> via <a href="https://www.flickr.com/photos/35663018@N03/3952278050/">Flickr</a></div>
+
+<!-- <div class="corner-logos">![Chrome](images/chrome.png) ![Samsung Internet beta](images/sbrowser5.2-beta.png) ![Firefox](images/firefox.png)</div> --></section>
+  </div>
+  <div class="slide hidden" id="slide-40">
+    <section class="slide-content"><p><img src="images/physical-web-google.png" alt="Physical Web"></p>
+<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div>
+
+<!-- Not to be confused with Nearby... --></section>
+  </div>
+  <div class="slide hidden" id="slide-41">
+    <section class="slide-content"><p><img src="images/project-magnet.png" alt="Project Magnet"></p>
+<div class="corner-logos grey-out"><img src="images/firefox.png" alt="Firefox"></div></section>
+  </div>
+  <div class="slide hidden" id="slide-42">
+    <section class="slide-content"><p><img src="images/closeby.png" alt="CloseBy"></p>
+<div class="corner-logos"><img src="images/sbrowser5.2-beta.png" alt="Samsung Internet beta"></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-43">
+    <section class="slide-content"><p><img src="images/beacon-toy-app.png" alt="Beacon toy app"></p>
+<div class="caption"><a href="https://play.google.com/store/apps/details?id=com.uriio">Beacon Toy (Android)</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-44">
+    <section class="slide-content"><p><img src="images/closeby-notification.png" alt="CloseBy"></p>
+</section>
+  </div>
+  <div class="slide hidden  " id="slide-45">
+    <section class="slide-content"><h2 id="web-bluetooth">Web Bluetooth</h2>
+<pre><code class="lang-javascript">navigator.bluetooth.requestDevice({
+  filters: [{
+    name: <span class="hljs-string">'SomeAmazingRobot'</span>
+  }],
+  optionalServices: [<span class="hljs-string">'battery_service'</span>]
+})
+...</code></pre>
+<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
+  </div>
+  <div class="slide hidden" id="slide-46">
+    <section class="slide-content"><p><img src="images/bluetooth-pairing-prompt.png" alt="Bluetooth pairing prompt"></p>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-47">
+    <section class="slide-content"><pre><code class="lang-javascript">  ...
+  .then(device =&gt; device.gatt.connect())
+  .then(server =&gt; server.getPrimaryService(<span class="hljs-string">'battery_service'</span>))
+  .then(service =&gt; service.getCharacteristic(<span class="hljs-string">'battery_level'</span>))</code></pre>
+</section>
+  </div>
+  <div class="slide hidden" id="slide-48">
+    <section class="slide-content"><pre><code class="lang-javascript">  ...
+  .then(characteristic =&gt; {
+    <span class="hljs-comment">// Read battery level</span>
+    <span class="hljs-keyword">return</span> characteristic.readValue();
+  })
+  .then(value =&gt; {
+    <span class="hljs-keyword">var</span> batteryLevel = value.getUint8(<span class="hljs-number">0</span>);
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Battery level'</span>, batteryLevel);
+  });</code></pre>
+<div class="caption"><a href="http://bit.ly/chrome-bluetooth-guide">bit.ly/chrome-bluetooth-guide</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-49">
+    <section class="slide-content"><video controls height="75%">
+  <source src="videos/webdrone-v1-1.webm"/>
+  <source src="videos/webdrone-v1-1.mp4"/>
+</video>
+
+<div class="caption"><a href="http://bit.ly/web-bluetooth-drone">bit.ly/web-bluetooth-drone</a></div></section>
+  </div>
+  <div class="slide hidden" id="slide-50">
+    <section class="slide-content"><h2 id="how-i-m-controlling-these-slides">How I&#39;m controlling these slides</h2>
+<ul>
+<li><a href="https://github.com/sandeepmistry/bleno">Bleno</a> combined with Web Sockets <em>(peripheral - Mac)</em></li>
+<li>Web Bluetooth <em>(central - Chrome for Android)</em></li>
+</ul>
+</section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-51">
+    <section class="slide-content"><p><img src="images/puckjs.jpg" alt="puck.js"></p>
+<div class="caption"><a href="http://www.puck-js.com/">puck.js</a></div>
+
+<!-- TODO if time replace with my video! https://twitter.com/poshaughnessy/status/808065469001375744 --></section>
+  </div>
+  <div class="slide hidden  bg-buzz5 bg-fade beyond" id="slide-52">
+    <section class="slide-content"><h2 id="beyond-reality">Beyond reality</h2>
+<h4 id="with">with</h4>
+<h1 id="webvr">WebVR</h1>
+<div class="credit"><a href="https://www.flickr.com/photos/kevharb/">Kevin Harber</a> via <a href="https://www.flickr.com/photos/kevharb/3065077415/">Flickr</a></div></section>
+  </div>
+  <div class="slide hidden  iframe" id="slide-53">
+    <section class="slide-content"><!-- TODO replace with local copy if time -->
+
+<iframe width="90%" height="90%" style="margin-top:5vh" src="https://www.youtube.com/embed/mN9G6lQKVsI" frameborder="0" allowfullscreen></iframe></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-54">
+    <section class="slide-content"><p><img src="images/aframe-site.png" alt="A-Frame site"></p>
+<h4 id="-aframe-io-https-aframe-io-"><a href="https://aframe.io">aframe.io</a></h4>
+<!-- Remember to say it includes the polyfill for Cardboard --></section>
+  </div>
+  <div class="slide hidden  bg-lights-of-city" id="slide-55">
+    <section class="slide-content"><pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"aframe.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden  bg-lights-of-city" id="slide-56">
+    <section class="slide-content"><pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">a-scene</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-sphere</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"0 1.25 -1"</span> <span class="hljs-attr">radius</span>=<span class="hljs-string">"1.25"</span> 
+            <span class="hljs-attr">color</span>=<span class="hljs-string">"#EF2D5E"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-sphere</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-box</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"-1 0.5 1"</span> <span class="hljs-attr">rotation</span>=<span class="hljs-string">"0 45 0"</span> 
+         <span class="hljs-attr">color</span>=<span class="hljs-string">"#4CC3D9"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-box</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-cylinder</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"1 0.75 1"</span> <span class="hljs-attr">radius</span>=<span class="hljs-string">"0.5"</span> 
+              <span class="hljs-attr">color</span>=<span class="hljs-string">"#FFC65D"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-cylinder</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-plane</span> <span class="hljs-attr">rotation</span>=<span class="hljs-string">"-90 0 0"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"4"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"4"</span> 
+            <span class="hljs-attr">color</span>=<span class="hljs-string">"#7BC8A4"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-plane</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">a-sky</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#ECECEC"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-sky</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">a-scene</span>&gt;</span></code></pre>
+</section>
+  </div>
+  <div class="slide hidden  iframe" id="slide-57">
+    <section class="slide-content"><iframe src="demos/aframe-basic/index.html" scrolling="no" width="90%" height="90%" style="margin-top:5vh"></iframe></section>
+  </div>
+  <div class="slide hidden" id="slide-58">
+    <section class="slide-content"><h2 id="browser-enthusiasm-so-far-">Browser enthusiasm (so far)</h2>
+<p><img src="images/webvr-browser-enthusiasm.png" alt="WebVR browser interest"></p>
+<div class="caption"><a href="https://iswebvrready.org/">iswebvrready.org</a></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-59">
+    <section class="slide-content"><p><img src="images/ada-webvr-crowd.jpg" alt="Audience for Ada&#39;s WebVR talk"></p>
+<div class="caption"><a href="https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794">&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards</a></div>
+
+<!-- And you can combine with WebRTC... --></section>
+  </div>
+  <div class="slide hidden  beyond-small" id="slide-60">
+    <section class="slide-content"><h3 id="beyond-clunky-checkout-forms">Beyond clunky checkout forms</h3>
+<h4 id="with">with</h4>
+<h2 id="web-payments">Web Payments</h2>
+<div class="left" style="width:58%; font-size:0.9em;">
+<pre style="display:block;"><code class="lang-javascript"><span class="hljs-keyword">new</span> PaymentRequest(methodData, details)
+  .show()
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">uiResult</span>) </span>{
+    processPayment(uiResult);
+  })
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    handlePaymentError(error);
+  });</code></pre>
+</div>
+<div class="right" style="width:38%">
+  <img alt="Payment Request example" src="images/payment-request-crop.png" style="margin:0 0 0 10px">
+</div>
+
+<div class="caption"><a href="http://bit.ly/how-to-take-web-payments">bit.ly/how-to-take-web-payments</a></div></section>
+  </div>
+  <div class="slide hidden  beyond-small" id="slide-61">
+    <section class="slide-content"><h3 id="beyond-network-downtime">Beyond network downtime</h3>
+<h4 id="with">with</h4>
+<h2 id="background-sync">Background sync</h2>
+<pre><code class="lang-javascript"><span class="hljs-comment">// Register a one-off sync</span>
+navigator.serviceWorker.ready.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">swReg</span>) </span>{
+    <span class="hljs-keyword">return</span> swReg.sync.register(<span class="hljs-string">'myLovelySync'</span>);
+  });
+
+<span class="hljs-comment">// service-worker.js</span>
+self.addEventListener(<span class="hljs-string">'sync'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
+  <span class="hljs-keyword">if</span> (event.tag == <span class="hljs-string">'myLovelySync'</span>) {
+    ...</code></pre>
+<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
+  </div>
+  <div class="slide hidden  beyond-small" id="slide-62">
+    <section class="slide-content"><h3 id="beyond-single-origin-caching">Beyond single origin caching</h3>
+<h4 id="with">with</h4>
+<h2 id="foreign-fetch">Foreign fetch</h2>
+<pre><code>Link: &lt;/service-worker.js&gt;; rel=&quot;serviceworker&quot;
+Origin-Trial: token_obtained_from_signup</code></pre>
+<p><a href="http://bit.ly/foreign-fetch">bit.ly/foreign-fetch</a></p>
+<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
+  </div>
+  <div class="slide hidden  bg-buzz6 bg-fade" id="slide-63">
+    <section class="slide-content"><h1 id="beyond-the-browser-">Beyond the <em>Browser</em></h1>
+<div class="caption"><a href="https://medium.com/samsung-internet-dev/is-browser-still-the-right-word-6815f93b866c">bit.ly/is-browser-still-the-right-word</a></div>
+
+<div class="credit"><a href="https://www.flickr.com/photos/payayita/">payayita</a> via <a href="https://www.flickr.com/photos/payayita/1129150332/">Flickr</a></div></section>
+  </div>
+  <div class="slide hidden  beyond get-involved bg-toy-story-alien bg-fade" id="slide-64">
+    <section class="slide-content"><h2 id="we-can-all-help-to-shape">We can all help to shape</h2>
+<h1 id="the-future-of-the-web">the future of the web</h1>
+<h4 id="web-incubator-community-group-wicg-io-https-wicg-io-">Web Incubator Community Group — <a href="https://wicg.io/">wicg.io</a></h4>
+<h4 id="chromium-contributions-samsung-github-io-chromium-http-samsung-github-io-chromium-">Chromium contributions — <a href="http://samsung.github.io/Chromium/">samsung.github.io/Chromium/</a></h4>
+</section>
+  </div>
+  <div class="slide hidden  bg-buzz-bye bg-fade" id="slide-65">
+    <section class="slide-content"><h1 id="thanks-">Thanks! 🙏</h1>
+<h2 id="-poshaughnessy-https-twitter-com-poshaughnessy-"><a href="https://twitter.com/poshaughnessy">@poshaughnessy</a></h2>
+<h2 id="-samsunginternet-https-twitter-com-samsunginternet-"><a href="https://twitter.com/samsunginternet">@samsunginternet</a></h2>
+<div class="credit"><a href="https://www.flickr.com/photos/brwynn/">Bridgette Wynn</a> via <a href="https://www.flickr.com/photos/brwynn/4870133844/in/photolist-8qmH7U-a27zM3-7h1ntQ-FMpJ5V-8pVgfS-6fQV4k-8offGv-dLmtz1-cfnyyj-9pUG6t-7Q6mc8-dz82Ks-8AQuwa-95Zimm-8rDw4L-8AVpKL-9dhs6t-6FsRjV-8rDyvs-9qam69-8dBd7t-6FsRj6-92qxGP-4nkESf-8A1fhL-98ZQP6-bWpBQ8-95WfNF-6FwY8w-b7JpX2-ybecj-95WfRH-8efWsX-bRjj8e-9nesie-6FwY6N-oNMUh-a7CFuW-8AUEyj-qhHEZy-9cGQP9-qhGZcf-ortUC5-8C5CKb-7SynPk-8rDus3-95w2dP-8wsvSY-fFat1y-8KRKhJ">Flickr</a></div></section>
+  </div>
+
+
+
+  <script src="lib/faye-browser-min.js"></script>
+  <script type="text/javascript">
+    /**
+ * Returns the current page number of the presentation.
+ */
+function currentPosition() {
+  return parseInt(document.querySelector('.slide:not(.hidden)').id.slice(6));
+}
+
+
+/**
+ * Navigates forward n pages
+ * If n is negative, we will navigate in reverse
+ */
+function navigate(n) {
+  var position = currentPosition();
+  var numSlides = document.getElementsByClassName('slide').length;
+
+  /* Positions are 1-indexed, so we need to add and subtract 1 */
+  var nextPosition = (position - 1 + n) % numSlides + 1;
+
+  /* Normalize nextPosition in-case of a negative modulo result */
+  nextPosition = (nextPosition - 1 + numSlides) % numSlides + 1;
+
+  document.getElementById('slide-' + position).classList.add('hidden');
+  document.getElementById('slide-' + nextPosition).classList.remove('hidden');
+
+  updateProgress();
+  updateURL();
+  updateTabIndex();
+}
+
+
+/**
+ * Updates the current URL to include a hashtag of the current page number.
+ */
+function updateURL() {
+  window.history.replaceState({} , null, '#' + currentPosition());
+}
+
+
+/**
+ * Sets the progress indicator.
+ */
+function updateProgress() {
+  var progressBar = document.querySelector('.progress-bar');
+
+  if (progressBar !== null) {
+    var numSlides = document.getElementsByClassName('slide').length;
+    var position = currentPosition() - 1;
+    var percent = (numSlides === 1) ? 100 : 100 * position / (numSlides - 1);
+    progressBar.style.width = percent.toString() + '%';
+  }
+}
+
+
+/**
+ * Removes tabindex property from all links on the current slide, sets
+ * tabindex = -1 for all links on other slides. Prevents slides from appearing
+ * out of control.
+ */
+function updateTabIndex() {
+  var allLinks = document.querySelectorAll('.slide a');
+  var position = currentPosition();
+  var currentPageLinks = document.getElementById('slide-' + position).querySelectorAll('a');
+  var i;
+
+  for (i = 0; i < allLinks.length; i++) {
+    allLinks[i].setAttribute('tabindex', -1);
+  }
+
+  for (i = 0; i < currentPageLinks.length; i++) {
+    currentPageLinks[i].removeAttribute('tabindex');
+  }
+}
+
+/**
+ * Determines whether or not we are currently in full screen mode
+ */
+function isFullScreen() {
+  return document.fullscreenElement ||
+    document.mozFullScreenElement ||
+    document.webkitFullscreenElement ||
+    document.msFullscreenElement;
+}
+
+/**
+ * Toggle fullScreen mode on document element.
+ * Works on chrome (>= 15), firefox (>= 9), ie (>= 11), opera(>= 12.1), safari (>= 5).
+ */
+function toggleFullScreen() {
+  /* Convenient renames */
+  var docElem = document.documentElement;
+  var doc = document;
+
+  docElem.requestFullscreen =
+    docElem.requestFullscreen ||
+    docElem.msRequestFullscreen ||
+    docElem.mozRequestFullScreen ||
+    docElem.webkitRequestFullscreen.bind(docElem, Element.ALLOW_KEYBOARD_INPUT);
+
+  doc.exitFullscreen =
+    doc.exitFullscreen ||
+    doc.msExitFullscreen ||
+    doc.mozCancelFullScreen ||
+    doc.webkitExitFullscreen;
+
+  isFullScreen() ? doc.exitFullscreen() : docElem.requestFullscreen();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Update the tabindex to prevent weird slide transitioning
+  updateTabIndex();
+
+  // If the location hash specifies a page number, go to it.
+  var page = window.location.hash.slice(1);
+  if (page) {
+    navigate(parseInt(page) - 1);
+  }
+
+  document.onkeydown = function (e) {
+    var kc = e.keyCode;
+
+    // left, down, H, J, backspace, PgUp - BACK
+    // up, right, K, L, space, PgDn - FORWARD
+    // enter - FULLSCREEN
+    if (kc === 37 || kc === 40 || kc === 8 || kc === 72 || kc === 74 || kc === 33) {
+      navigate(-1);
+    } else if (kc === 38 || kc === 39 || kc === 32 || kc === 75 || kc === 76 || kc === 34) {
+      navigate(1);
+    } else if (kc === 13) {
+      toggleFullScreen();
+    }
+  };
+
+  if (document.querySelector('.next') && document.querySelector('.prev')) {
+    document.querySelector('.next').onclick = function (e) {
+      e.preventDefault();
+      navigate(1);
+    };
+
+    document.querySelector('.prev').onclick = function (e) {
+      e.preventDefault();
+      navigate(-1);
+    };
+  }
+});
+
+/**
+ * Swipe handling added by Peter
+ */
+
+var SWIPE_X_MIN = 50,
+    startX;
+
+document.body.addEventListener('touchstart', function(e) {
+  e.preventDefault();
+  var touch = e.touches[0];
+  startX = touch.screenX;
+}, false);
+
+document.body.addEventListener('touchend', function(e) {
+  e.preventDefault();
+  var touch = e.changedTouches[0];
+  var swipeXDist = touch.screenX - startX;
+  if (swipeXDist < -SWIPE_X_MIN) {
+    // Swipe to left = move right
+    navigate(1);
+  } else if (swipeXDist > SWIPE_X_MIN) {
+    // Swipe to right = move left
+    navigate(-1);
+  }
+}, false);
+
+
+/**
+ * Web Sockets (Faye) added by Peter - for remote control
+ */
+
+var wsClient = new Faye.Client('http://localhost:9000/ws');
+
+console.log('wsClient', wsClient);
+
+wsClient.subscribe('/remote', function(message) {
+  console.log('Remote control command: ' + message);
+  switch (message) {
+    case 1: {
+      // Left
+      navigate(-1);
+      break;
+    }
+    case 2: {
+      // Right
+      navigate(1);
+      break;
+    }
+  }
+});
+
+  </script>
+</body>
+</html>
