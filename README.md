@@ -1,11 +1,10 @@
-# "Beyond the Browser: PWAs, WebVR & Physical Web" - London JavaScript
+# "Beyond the Browser: PWAs & the future of web apps" - Codebar Feb Monthly
 
-My slides for [London JavaScript, Jan 2017](https://www.meetup.com/London-JavaScript-Community/events/235924973/). 
-Generated using [cleaver](https://github.com/jdan/cleaver).
+My slides for [Codebar Monthly, Feb 2017](https://codebar.io/meetings/monthly-feb-2017). 
 
 ## To view the slides
 
-Check them out at: [poshaughnessy.github.io/london-js-beyond-browser-2017/](https://poshaughnessy.github.io/london-js-beyond-browser-2017/)
+Check them out at: [poshaughnessy.github.io/codebar-beyond-browser-2017/](https://poshaughnessy.github.io/codebar-beyond-browser-2017/)
 
 Use arrow keys or the arrow buttons to move left/right.
 
