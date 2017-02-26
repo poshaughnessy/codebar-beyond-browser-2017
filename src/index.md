@@ -11,23 +11,20 @@ controls: false
 
 <div class="contact">
   <p>Peter O'Shaughnessy</p>
-  <p>[@poshaughnessy](https://twitter.com/poshaughnessy) &middot; [@samsunginternet](https://twitter.com/samsunginternet)</p>
+  <p>[@poshaughnessy](https://twitter.com/poshaughnessy)</p>
 </div>
 
 <div class="credit">[Carlos](https://www.flickr.com/photos/armadillo444/) via [Flickr](https://www.flickr.com/photos/armadillo444/2901378790)</div>
 
-<!-- TODO include later? -->
-<!--![Samsung Internet icon on homescreen](images/samsung-internet-home.png)-->
-<!--![Snapwat](images/snapwat.png)-->
+-- align-top img-with-caption
 
+![Samsung Internet icon on homescreen](images/samsung-internet-phone-blur.png)
 
--- bg-2017
+[@samsunginternet](https://twitter.com/samsunginternet)
 
-<div class="credit">[pixabay](https://pixabay.com/en/new-year-s-eve-fireworks-2017-1664737/)</div>
+-- bg-iphone-nyt
 
--- bg-iphone-launch
-
-<div class="credit">[Wikimedia](https://commons.wikimedia.org/wiki/File:Steve_Jobs_presents_iPhone.jpg)</div>
+<div class="credit">[Robert Scoble](https://www.flickr.com/photos/scobleizer/4697192856)</div>
 
 --
 
@@ -38,12 +35,6 @@ controls: false
 ![xkcd cartoon, Mac/PC](images/xkcd_mac_pc.png)
 
 <div class="credit">[xkcd](http://xkcd.com/934/)</div>
-
---
-
-![Address book access](images/address-book.png)
-
-<div class="credit">[The Next Web](http://thenextweb.com/mobile/2012/02/11/following-paths-contact-fiasco-instagram-silently-adds-a-contact-list-access-prompt/)</div>
 
 -- img-with-caption
 
@@ -105,6 +96,14 @@ controls: false
 
 -- img-with-caption
 
+TODO Twitter PWA
+
+-- img-with-caption
+
+TODO Another favourite PWA
+
+-- img-with-caption
+
 [![pwa.rocks](images/pwa-rocks.png)](https://pwa.rocks)
 
 <div class="caption">[pwa.rocks](https://pwa.rocks)</div>
@@ -115,16 +114,6 @@ controls: false
 
 <div class="caption">[outweb.io](https://outweb.io)</div>
 
---
-
-![Twitter service worker](images/twitter-sw.png)
-
--- img-with-caption
-
-[![Inspire Hub](images/inspirehub.jpg)](https://inspirehub.ihubapp.org/stories/41314)
-
-<div class="caption">[&ldquo;PWA Technology helped my community following a natural disaster&rdquo; - InspireHub](https://inspirehub.ihubapp.org/stories/41314)</div>
-
 -- bg-buzz2 bg-fade beyond
 
 ## Beyond the browser tab
@@ -133,14 +122,9 @@ controls: false
 
 <div class="credit">[Robert Mitchem](https://www.flickr.com/photos/29290711@N04/) via [Flickr](https://www.flickr.com/photos/29290711@N04/4299610660/in/photolist-7xWCsh-4p7WUc-c9SA1-4p7WUk-eekmjY-5wYXcL-eekpus-eTmXrz-qqcft4-eeeE7k-94caDx-FrAo5-c9RX3-c9Snm-nbYsTe-e3un1X-8fAVES-8fATZy-8fAVeE-8F2Rhe-8fAX5m-8fAUPU-bu5ZkE-8fxGyK-8fxGLk-8fxEvV-8fAVQN-8fAV2f-8fAUCJ-6JP7C2-c9Tti-c9T3i-c9TkX-PePL8-c9T9A-c9TfB-c9Stj-6LpjA7-c9THy-c9S9V-c9RAT-8vgbRB-8hBKqd-8uLTaQ-c9S3P-6LpjEb-72bsgt-c9SG9-c9TAV-c9SNK)</div>
 
---
+-- img-with-caption
 
-<video controls width="80%">
-  <source src="videos/snapwat-offline-demo.webm"/>
-  <source src="videos/snapwat-offline-demo.mp4"/>
-</video>
-
-<div class="caption">[https://snapw.at](snapw.at)</div>
+TODO diagram explaining service workers
 
 -- img-with-caption
 
@@ -157,8 +141,22 @@ controls: false
 
 ## Progressive enhancement
 
+```javascript
+if ('serviceWorker' in navigator) {
+  ...
+}
+```
+
+<div class="credit">[Joanne Lummy](https://www.flickr.com/photos/joanne_lummy) via [Flickr](https://www.flickr.com/photos/joanne_lummy/5202018462)</div>
+
+-- bg-buzz-nasa progressive-enhancement bg-fade
+
+## Offline first
+
 #### Where service workers are available, you can think of the 
 ###*network* as an enhancement!
+
+<div class="credit">[NASA HQ](https://www.flickr.com/photos/nasahqphoto/) via [Flickr](https://www.flickr.com/photos/nasahqphoto/6881402904)</div>
 
 --
 
@@ -167,13 +165,17 @@ controls: false
 --
 
 ```javascript
-navigator.serviceWorker.register('/service-worker.js')
-  .then(function(registration) {
-    console.log('Registration successful', registration.scope);
-  })
-  .catch(function(error) {
-    console.log('Failed - service worker not installed', error);
-  });
+if ('serviceWorker' in navigator) {
+
+  navigator.serviceWorker.register('/sw.js')
+    .then(function() {
+      console.log('Service worker successfully registered');
+    })
+    .catch(function(err) {
+      console.error('Service worker failed to register', err);
+    });
+
+}
 ```
 
 --
@@ -213,57 +215,6 @@ self.addEventListener('fetch', function(event) {
 ```
 
 <div class="caption">[Using Service Workers - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)</div>
-
---
-
-## Don't precache too much on install
-
-```javascript
-// App shell resources
-var RESOURCES = [
-  '/js/app.js',
-  '/css/styles.css',
-  '/images/logo.png', 
-  ...
-];
-
-...
-cache.addAll(RESOURCES);
-```
-
-<!--## Rendering preferences (in order) 👇-->
-
-<!--1. SSR app shell & initial page. CSR takes over.-->
-<!--1. SSR only app shell. JS fetches rest on load.-->
-<!--1. SSR full page.-->
-<!--1. CSR full page.-->
-
---
-
-## Check Lighthouse
-
-<img src="images/lighthouse-report.png" alt="Lighthouse" width="80%"/>
-
---
-
-## Be wary of waiting for fetch fail
-
-```javascript
-self.addEventListener('fetch', function(event) {
-
-  var responsePromise = fetch(event.request)
-    .then(function(response) {
-      // Cache response if appropriate here...      
-      return response;
-    })
-    .catch(function(err) {
-      // Fetch failed - maybe after a while!
-      return caches.match(event.request);
-    });
-
-  event.respondWith(responsePromise);
-});
-```
 
 --
 

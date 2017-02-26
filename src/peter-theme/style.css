@@ -644,6 +644,10 @@ pre .xml .cdata {
   background-image: url(images/buzz-laser-flickr_joanne_lummy.jpg);
 }
 
+.slide.bg-buzz-nasa:after {
+  background-image: url(images/buzz-flickr-nasa.jpg);
+}
+
 .slide.bg-buzz-bye:after {
   background-image: url(images/buzz-flickr_bridgettewynn.jpg);
 }
@@ -652,8 +656,8 @@ pre .xml .cdata {
   background-image: url(images/new-years-eve-1664737_1920.jpg);
 }
 
-.slide.bg-iphone-launch:after {
-  background-image: url(images/Steve_Jobs_presents_iPhone.jpg);
+.slide.bg-iphone-nyt:after {
+  background-image: url(images/iphone-nyt-scoble.jpg);
 }
 
 .slide.bg-pwarocks {
@@ -711,7 +715,7 @@ pre .xml .cdata {
 }
 
 .progressive-enhancement h4 {
-  font-size: 1em; 
+  font-size: 1em;
   margin: 1.5em 0 0 0;
 }
 
@@ -753,4 +757,14 @@ pre .xml .cdata {
 
 .grey-out {
   filter: grayscale(1);
+}
+
+.align-top .slide-content {
+  padding: 0;
+  height: 100%;
+}
+
+.align-top .slide-content img {
+  position: relative;
+  top: 0;
 }
