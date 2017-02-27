@@ -110,6 +110,12 @@ controls: false
 
 <div class="caption">[outweb.io](https://outweb.io)</div>
 
+-- img-with-caption
+
+[![PWAs simply make sense](images/pwas-simply-make-sense.png)](https://cloudfour.com/thinks/progressive-web-apps-simply-make-sense/)
+
+<div class="caption">[cloudfour.com/thinks/progressive-web-apps-simply-make-sense/](https://cloudfour.com/thinks/progressive-web-apps-simply-make-sense/)</div>
+
 -- bg-buzz-nasa bg-fade beyond beyond-small
 
 ## Beyond the browser tab
