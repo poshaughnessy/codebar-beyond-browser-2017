@@ -1033,7 +1033,27 @@ self.addEventListener(<span class="hljs-string">'fetch'</span>, ...);</code></pr
 <!-- ![Push notification anti-pattern](images/push-bad.jpg) -->
 <!-- <div class="caption">*Please* keep it [timely, relevant and precise!](https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/)</div> --></section>
   </div>
-  <div class="slide hidden  bg-buzz4 bg-fade beyond" id="slide-26">
+  <div class="slide hidden  beyond-small" id="slide-26">
+    <section class="slide-content"><h3 id="beyond-clunky-checkout-forms">Beyond clunky checkout forms</h3>
+<h4 id="with">with</h4>
+<h2 id="web-payments">Web Payments</h2>
+<div class="left" style="width:58%; font-size:0.9em;">
+<pre style="display:block;"><code class="lang-javascript"><span class="hljs-keyword">new</span> PaymentRequest(methodData, details)
+  .show()
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">uiResult</span>) </span>{
+    processPayment(uiResult);
+  })
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    handlePaymentError(error);
+  });</code></pre>
+</div>
+<div class="right" style="width:38%">
+  <img alt="Payment Request example" src="images/payment-request-crop.png" style="margin:0 0 0 10px">
+</div>
+
+<div class="caption"><a href="http://bit.ly/how-to-take-web-payments">bit.ly/how-to-take-web-payments</a></div></section>
+  </div>
+  <div class="slide hidden  bg-buzz4 bg-fade beyond" id="slide-27">
     <section class="slide-content"><h2 id="beyond-the-digital-world">Beyond the digital world</h2>
 <h4 id="with">with</h4>
 <h1 id="physical-web">Physical Web</h1>
@@ -1043,31 +1063,30 @@ self.addEventListener(<span class="hljs-string">'fetch'</span>, ...);</code></pr
 
 <!-- <div class="corner-logos">![Chrome](images/chrome.png) ![Samsung Internet beta](images/sbrowser5.2-beta.png) ![Firefox](images/firefox.png)</div> --></section>
   </div>
-  <div class="slide hidden  three-images img-with-caption" id="slide-27">
+  <div class="slide hidden  three-images img-with-caption" id="slide-28">
     <section class="slide-content"><p><img src="images/physical-web-google.png" alt="Physical Web"> <img src="images/project-magnet.png" alt="Project Magnet"> <img src="images/closeby.png" alt="CloseBy"></p>
 <div class="caption">Google&#39;s <a href="https://support.google.com/chrome/answer/6239299">Physical Web</a>, Mozilla&#39;s <a href="https://github.com/mozilla-magnet/magnet">Project Magnet</a>, Samsung&#39;s <a href="https://samsunginter.net/docs/closeby.html">CloseBy</a></div></section>
   </div>
-  <div class="slide hidden  img-with-caption" id="slide-28">
+  <div class="slide hidden  img-with-caption" id="slide-29">
     <section class="slide-content"><p><img src="images/beacon-toy-app.png" alt="Beacon toy app"></p>
 <div class="caption"><a href="https://play.google.com/store/apps/details?id=com.uriio">Beacon Toy (Android)</a></div></section>
   </div>
-  <div class="slide hidden" id="slide-29">
+  <div class="slide hidden" id="slide-30">
     <section class="slide-content"><p><img src="images/closeby-notification.png" alt="CloseBy"></p>
 </section>
   </div>
-  <div class="slide hidden  " id="slide-30">
+  <div class="slide hidden  " id="slide-31">
     <section class="slide-content"><h2 id="web-bluetooth">Web Bluetooth</h2>
 <pre><code class="lang-javascript">navigator.bluetooth.requestDevice({
   filters: [{
-    name: <span class="hljs-string">'SomeAmazingRobot'</span>
-  }],
-  optionalServices: [<span class="hljs-string">'battery_service'</span>]
+    namePrefix: <span class="hljs-string">'Travis'</span>
+  }]
 })
 ...</code></pre>
-<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
-  </div>
-  <div class="slide hidden" id="slide-31">
-    <section class="slide-content"><p><img src="images/bluetooth-pairing-prompt.png" alt="Bluetooth pairing prompt"></p>
+<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div>
+
+<!--![Bluetooth pairing prompt](images/bluetooth-pairing-prompt.png)-->
+
 <!-- ```javascript -->
 <!--  ... -->
 <!--  .then(device => device.gatt.connect()) -->
@@ -1125,81 +1144,81 @@ self.addEventListener(<span class="hljs-string">'fetch'</span>, ...);</code></pr
 <iframe width="90%" height="90%" style="margin-top:5vh" src="https://www.youtube.com/embed/mN9G6lQKVsI" frameborder="0" allowfullscreen></iframe></section>
   </div>
   <div class="slide hidden  img-with-caption" id="slide-37">
+    <section class="slide-content"><p><a href="https://github.com/aframevr/a-painter/issues/99"><img src="images/apainter-feiss.png" alt="A-Painting by feiss"></a></p>
+<div class="caption">Via the <a href="https://github.com/aframevr/a-painter/issues/99">A-Frame Gallery</a></div></section>
+  </div>
+  <div class="slide hidden  img-with-caption" id="slide-38">
     <section class="slide-content"><p><img src="images/metaverse-tweet.png" alt="Real and virtual audiences for Ada&#39;s WebVR talk"></p>
 <div class="caption"><a href="https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794">&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards</a></div>
 
 <!-- And you can combine with WebRTC... -->
 
-<!-- Remember to say it includes the polyfill for Cardboard --></section>
-  </div>
-  <div class="slide hidden  bg-lights-of-city" id="slide-38">
-    <section class="slide-content"><pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"aframe.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-...
-<span class="hljs-tag">&lt;<span class="hljs-name">a-scene</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">a-sphere</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"0 1.25 -1"</span> <span class="hljs-attr">radius</span>=<span class="hljs-string">"1.25"</span> 
-            <span class="hljs-attr">color</span>=<span class="hljs-string">"#EF2D5E"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-sphere</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">a-box</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"-1 0.5 1"</span> <span class="hljs-attr">rotation</span>=<span class="hljs-string">"0 45 0"</span> 
-         <span class="hljs-attr">color</span>=<span class="hljs-string">"#4CC3D9"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-box</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">a-cylinder</span> <span class="hljs-attr">position</span>=<span class="hljs-string">"1 0.75 1"</span> <span class="hljs-attr">radius</span>=<span class="hljs-string">"0.5"</span> 
-              <span class="hljs-attr">color</span>=<span class="hljs-string">"#FFC65D"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-cylinder</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">a-plane</span> <span class="hljs-attr">rotation</span>=<span class="hljs-string">"-90 0 0"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"4"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"4"</span> 
-            <span class="hljs-attr">color</span>=<span class="hljs-string">"#7BC8A4"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-plane</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">a-sky</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#ECECEC"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">a-sky</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">a-scene</span>&gt;</span></code></pre>
-<div class="caption"><a href="https://aframe.io">aframe.io</a></div></section>
-  </div>
-  <div class="slide hidden  iframe" id="slide-39">
-    <section class="slide-content"><iframe src="demos/aframe-basic/index.html" scrolling="no" width="90%" height="90%" style="margin-top:5vh"></iframe>
+<!-- Remember to say it includes the polyfill for Cardboard -->
+
+<!-- -- bg-lights-of-city -->
+
+<!-- ```html
+<!-- <script src="aframe.js"></script>
+<!-- ...
+<!-- <a-scene>
+<!--   <a-sphere position="0 1.25 -1" radius="1.25" 
+<!--             color="#EF2D5E"></a-sphere>
+<!--   <a-box position="-1 0.5 1" rotation="0 45 0" 
+<!--          color="#4CC3D9"></a-box>
+<!--   <a-cylinder position="1 0.75 1" radius="0.5" 
+<!--               color="#FFC65D"></a-cylinder>
+<!--   <a-plane rotation="-90 0 0" width="4" height="4" 
+<!--             color="#7BC8A4"></a-plane>
+<!--   <a-sky color="#ECECEC"></a-sky>
+<!-- </a-scene>
+<!-- ```
+
+<!-- <div class="caption">[aframe.io](https://aframe.io)</div>
+
+<!-- -- iframe -->
+
+<!-- <iframe src="demos/aframe-basic/index.html" scrolling="no" width="90%" height="90%" style="margin-top:5vh"></iframe> -->
 
 <!-- ## Browser enthusiasm (so far) -->
 <!-- ![WebVR browser interest](images/webvr-browser-enthusiasm.png) -->
-<!-- <div class="caption">[iswebvrready.org](https://iswebvrready.org/)</div> --></section>
-  </div>
-  <div class="slide hidden  beyond-small" id="slide-40">
-    <section class="slide-content"><h3 id="beyond-clunky-checkout-forms">Beyond clunky checkout forms</h3>
-<h4 id="with">with</h4>
-<h2 id="web-payments">Web Payments</h2>
-<div class="left" style="width:58%; font-size:0.9em;">
-<pre style="display:block;"><code class="lang-javascript"><span class="hljs-keyword">new</span> PaymentRequest(methodData, details)
-  .show()
-  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">uiResult</span>) </span>{
-    processPayment(uiResult);
-  })
-  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
-    handlePaymentError(error);
-  });</code></pre>
-</div>
-<div class="right" style="width:38%">
-  <img alt="Payment Request example" src="images/payment-request-crop.png" style="margin:0 0 0 10px">
-</div>
+<!-- <div class="caption">[iswebvrready.org](https://iswebvrready.org/)</div> -->
 
-<div class="caption"><a href="http://bit.ly/how-to-take-web-payments">bit.ly/how-to-take-web-payments</a></div></section>
-  </div>
-  <div class="slide hidden  beyond-small" id="slide-41">
-    <section class="slide-content"><h3 id="beyond-network-downtime">Beyond network downtime</h3>
-<h4 id="with">with</h4>
-<h2 id="background-sync">Background sync</h2>
-<pre><code class="lang-javascript"><span class="hljs-comment">// Register a one-off sync</span>
-navigator.serviceWorker.ready.then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">swReg</span>) </span>{
-    <span class="hljs-keyword">return</span> swReg.sync.register(<span class="hljs-string">'myLovelySync'</span>);
-  });
+<!-- -- beyond-small -->
 
-<span class="hljs-comment">// service-worker.js</span>
-self.addEventListener(<span class="hljs-string">'sync'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
-  <span class="hljs-keyword">if</span> (event.tag == <span class="hljs-string">'myLovelySync'</span>) {
-    ...</code></pre>
-<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
+<!-- ### Beyond network downtime -->
+<!-- #### with -->
+<!-- ## Background sync -->
+
+<!-- ```javascript -->
+<!-- // Register a one-off sync -->
+<!-- navigator.serviceWorker.ready.then(function(swReg) { -->
+<!--     return swReg.sync.register('myLovelySync'); -->
+<!-- }); -->
+
+<!-- // service-worker.js -->
+<!-- self.addEventListener('sync', function(event) { -->
+<!--   if (event.tag == 'myLovelySync') { -->
+<!--     ... -->
+<!-- ``` -->
+
+<!-- <div class="corner-logos">![Chrome](images/chrome.png)</div> -->
+
+<!-- -- beyond-small -->
+
+<!-- ### Beyond single origin caching -->
+<!-- #### with -->
+<!-- ## Foreign fetch -->
+
+<!-- ``` -->
+<!-- Link: </service-worker.js>; rel="serviceworker" -->
+<!-- Origin-Trial: token_obtained_from_signup -->
+<!-- ``` -->
+
+<!-- [bit.ly/foreign-fetch](http://bit.ly/foreign-fetch) -->
+
+<!-- <div class="corner-logos">![Chrome](images/chrome.png)</div> --></section>
   </div>
-  <div class="slide hidden  beyond-small" id="slide-42">
-    <section class="slide-content"><h3 id="beyond-single-origin-caching">Beyond single origin caching</h3>
-<h4 id="with">with</h4>
-<h2 id="foreign-fetch">Foreign fetch</h2>
-<pre><code>Link: &lt;/service-worker.js&gt;; rel=&quot;serviceworker&quot;
-Origin-Trial: token_obtained_from_signup</code></pre>
-<p><a href="http://bit.ly/foreign-fetch">bit.ly/foreign-fetch</a></p>
-<div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
-  </div>
-  <div class="slide hidden  bg-buzz6 bg-fade beyond-browser-compare" id="slide-43">
+  <div class="slide hidden  bg-buzz6 bg-fade beyond-browser-compare" id="slide-39">
     <section class="slide-content"><h2 id="beyond-the-browser-">Beyond the <em>Browser</em></h2>
 <table>
   <tr>
@@ -1220,14 +1239,14 @@ Origin-Trial: token_obtained_from_signup</code></pre>
 
 <div class="credit"><a href="https://www.flickr.com/photos/payayita/">payayita</a> via <a href="https://www.flickr.com/photos/payayita/1129150332/">Flickr</a></div></section>
   </div>
-  <div class="slide hidden  beyond get-involved bg-toy-story-alien bg-fade" id="slide-44">
+  <div class="slide hidden  beyond get-involved bg-toy-story-alien bg-fade" id="slide-40">
     <section class="slide-content"><h2 id="we-can-all-help-to-shape">We can all help to shape</h2>
 <h1 id="the-future-of-the-web">the future of the web</h1>
 <h4 id="web-incubator-community-group-wicg-io-https-wicg-io-">Web Incubator Community Group — <a href="https://wicg.io/">wicg.io</a></h4>
 <h4 id="chromium-contributions-samsung-github-io-chromium-http-samsung-github-io-chromium-">Chromium contributions — <a href="http://samsung.github.io/Chromium/">samsung.github.io/Chromium/</a></h4>
 </section>
   </div>
-  <div class="slide hidden  bg-buzz-bye bg-fade" id="slide-45">
+  <div class="slide hidden  bg-buzz-bye bg-fade" id="slide-41">
     <section class="slide-content"><h1 id="thanks-">Thanks! 🙏</h1>
 <h4 id="-for-a-prize-how-many-buzz-lightyears-were-in-this-presentation-"><strong>For a prize!</strong> How many Buzz Lightyears were in this presentation?</h4>
 <!-- Shh! The secret answer is: 8 -->
