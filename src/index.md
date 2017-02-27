@@ -112,9 +112,11 @@ controls: false
 
 -- bg-buzz-nasa bg-fade beyond
 
-## Beyond tabs
+## Beyond the browser tab
 #### with
 # Web App Manifest
+#### &
+# Add To Homescreen
 
 -- manifest-code
 
@@ -142,6 +144,14 @@ controls: false
   ...
 }
 ```
+
+-- img-with-caption four-images
+
+![Add to homescreen (1)](images/snapwat-android-a2h-1.png) ![Add to homescreen (2)](images/snapwat-android-a2h-2.png) ![Add to homescreen (3)](images/snapwat-android-a2h-3.png) ![Add to homescreen (4)](images/snapwat-android-a2h-4.png)
+
+<div class="caption">[developers.google.com/web/updates/2017/02/improved-add-to-home-screen](https://developers.google.com/web/updates/2017/02/improved-add-to-home-screen)</div>
+
+<!-- https://blog.chromium.org/2017/02/chrome-57-beta-css-grid-layout-improved.html -->
 
 -- img-with-caption
 
@@ -336,7 +346,7 @@ navigator.bluetooth.requestDevice({
 
 -- img-with-caption
 
-![Audience for Ada's WebVR talk](images/ada-webvr-crowd.jpg)
+![Real and virtual audiences for Ada's WebVR talk](images/metaverse-tweet.png)
 
 <div class="caption">[&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards](https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794)</div>
 

@@ -789,6 +789,10 @@ pre .xml .cdata {
   padding: 0 10px;
 }
 
+.four-images img {
+  max-width: 24%;
+}
+
 .beyond-browser-compare table {
   margin: 0 auto 1em auto;
 }
