@@ -153,6 +153,8 @@ controls: false
 
 <div class="caption">[developers.google.com/web/updates/2017/02/improved-add-to-home-screen](https://developers.google.com/web/updates/2017/02/improved-add-to-home-screen)</div>
 
+<div class="corner-logos">![Chrome](images/chrome.png)</div>
+
 <!-- https://blog.chromium.org/2017/02/chrome-57-beta-css-grid-layout-improved.html -->
 
 -- img-with-caption
