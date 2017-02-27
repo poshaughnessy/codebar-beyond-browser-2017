@@ -687,6 +687,10 @@ pre .xml .cdata {
   background-position-y: bottom;
 }
 
+.slide.bg-samsung-internet-for-gear-vr:after {
+  background-image: url(images/samsung-internet-gear-vr-codebar.jpg);
+}
+
 .bg-buzz-laser h4 {
   margin-top: 1.5em;
   font-size: 1.1em;
@@ -702,6 +706,10 @@ pre .xml .cdata {
 .beyond-small h3,
 .progressive-enhancement h3 {
   color: #987fff;
+}
+
+.beyond-small h1 {
+  font-size: 2.5em;
 }
 
 .progressive-enhancement h2 {

@@ -694,6 +694,10 @@ pre .xml .cdata {
   background-position-y: bottom;
 }
 
+.slide.bg-samsung-internet-for-gear-vr:after {
+  background-image: url(images/samsung-internet-gear-vr-codebar.jpg);
+}
+
 .bg-buzz-laser h4 {
   margin-top: 1.5em;
   font-size: 1.1em;
@@ -709,6 +713,10 @@ pre .xml .cdata {
 .beyond-small h3,
 .progressive-enhancement h3 {
   color: #987fff;
+}
+
+.beyond-small h1 {
+  font-size: 2.5em;
 }
 
 .progressive-enhancement h2 {
@@ -906,7 +914,7 @@ pre .xml .cdata {
     <section class="slide-content"><p><a href="https://outweb.io"><img src="images/outweb.png" alt="outweb.io"></a></p>
 <div class="caption"><a href="https://outweb.io">outweb.io</a></div></section>
   </div>
-  <div class="slide hidden  bg-buzz-nasa bg-fade beyond" id="slide-14">
+  <div class="slide hidden  bg-buzz-nasa bg-fade beyond beyond-small" id="slide-14">
     <section class="slide-content"><h2 id="beyond-the-browser-tab">Beyond the browser tab</h2>
 <h4 id="with">with</h4>
 <h1 id="web-app-manifest">Web App Manifest</h1>
@@ -1093,12 +1101,15 @@ self.addEventListener(<span class="hljs-string">'fetch'</span>, ...);</code></pr
 <h1 id="webvr">WebVR</h1>
 <div class="credit"><a href="https://www.flickr.com/photos/kevharb/">Kevin Harber</a> via <a href="https://www.flickr.com/photos/kevharb/3065077415/">Flickr</a></div></section>
   </div>
-  <div class="slide hidden  iframe" id="slide-34">
+  <div class="slide hidden  bg-samsung-internet-for-gear-vr" id="slide-34">
+    <section class="slide-content"></section>
+  </div>
+  <div class="slide hidden  iframe" id="slide-35">
     <section class="slide-content"><!-- TODO replace with local copy if time -->
 
 <iframe width="90%" height="90%" style="margin-top:5vh" src="https://www.youtube.com/embed/mN9G6lQKVsI" frameborder="0" allowfullscreen></iframe></section>
   </div>
-  <div class="slide hidden  img-with-caption" id="slide-35">
+  <div class="slide hidden  img-with-caption" id="slide-36">
     <section class="slide-content"><p><img src="images/metaverse-tweet.png" alt="Real and virtual audiences for Ada&#39;s WebVR talk"></p>
 <div class="caption"><a href="https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794">&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards</a></div>
 
@@ -1106,7 +1117,7 @@ self.addEventListener(<span class="hljs-string">'fetch'</span>, ...);</code></pr
 
 <!-- Remember to say it includes the polyfill for Cardboard --></section>
   </div>
-  <div class="slide hidden  bg-lights-of-city" id="slide-36">
+  <div class="slide hidden  bg-lights-of-city" id="slide-37">
     <section class="slide-content"><pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"aframe.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 ...
 <span class="hljs-tag">&lt;<span class="hljs-name">a-scene</span>&gt;</span>
@@ -1122,14 +1133,14 @@ self.addEventListener(<span class="hljs-string">'fetch'</span>, ...);</code></pr
 <span class="hljs-tag">&lt;/<span class="hljs-name">a-scene</span>&gt;</span></code></pre>
 <div class="caption"><a href="https://aframe.io">aframe.io</a></div></section>
   </div>
-  <div class="slide hidden  iframe" id="slide-37">
+  <div class="slide hidden  iframe" id="slide-38">
     <section class="slide-content"><iframe src="demos/aframe-basic/index.html" scrolling="no" width="90%" height="90%" style="margin-top:5vh"></iframe>
 
 <!-- ## Browser enthusiasm (so far) -->
 <!-- ![WebVR browser interest](images/webvr-browser-enthusiasm.png) -->
 <!-- <div class="caption">[iswebvrready.org](https://iswebvrready.org/)</div> --></section>
   </div>
-  <div class="slide hidden  beyond-small" id="slide-38">
+  <div class="slide hidden  beyond-small" id="slide-39">
     <section class="slide-content"><h3 id="beyond-clunky-checkout-forms">Beyond clunky checkout forms</h3>
 <h4 id="with">with</h4>
 <h2 id="web-payments">Web Payments</h2>
@@ -1149,7 +1160,7 @@ self.addEventListener(<span class="hljs-string">'fetch'</span>, ...);</code></pr
 
 <div class="caption"><a href="http://bit.ly/how-to-take-web-payments">bit.ly/how-to-take-web-payments</a></div></section>
   </div>
-  <div class="slide hidden  beyond-small" id="slide-39">
+  <div class="slide hidden  beyond-small" id="slide-40">
     <section class="slide-content"><h3 id="beyond-network-downtime">Beyond network downtime</h3>
 <h4 id="with">with</h4>
 <h2 id="background-sync">Background sync</h2>
@@ -1164,7 +1175,7 @@ self.addEventListener(<span class="hljs-string">'sync'</span>, <span class="hljs
     ...</code></pre>
 <div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
   </div>
-  <div class="slide hidden  beyond-small" id="slide-40">
+  <div class="slide hidden  beyond-small" id="slide-41">
     <section class="slide-content"><h3 id="beyond-single-origin-caching">Beyond single origin caching</h3>
 <h4 id="with">with</h4>
 <h2 id="foreign-fetch">Foreign fetch</h2>
@@ -1173,7 +1184,7 @@ Origin-Trial: token_obtained_from_signup</code></pre>
 <p><a href="http://bit.ly/foreign-fetch">bit.ly/foreign-fetch</a></p>
 <div class="corner-logos"><img src="images/chrome.png" alt="Chrome"></div></section>
   </div>
-  <div class="slide hidden  bg-buzz6 bg-fade beyond-browser-compare" id="slide-41">
+  <div class="slide hidden  bg-buzz6 bg-fade beyond-browser-compare" id="slide-42">
     <section class="slide-content"><h2 id="beyond-the-browser-">Beyond the <em>Browser</em></h2>
 <table>
   <tr>
@@ -1194,14 +1205,14 @@ Origin-Trial: token_obtained_from_signup</code></pre>
 
 <div class="credit"><a href="https://www.flickr.com/photos/payayita/">payayita</a> via <a href="https://www.flickr.com/photos/payayita/1129150332/">Flickr</a></div></section>
   </div>
-  <div class="slide hidden  beyond get-involved bg-toy-story-alien bg-fade" id="slide-42">
+  <div class="slide hidden  beyond get-involved bg-toy-story-alien bg-fade" id="slide-43">
     <section class="slide-content"><h2 id="we-can-all-help-to-shape">We can all help to shape</h2>
 <h1 id="the-future-of-the-web">the future of the web</h1>
 <h4 id="web-incubator-community-group-wicg-io-https-wicg-io-">Web Incubator Community Group — <a href="https://wicg.io/">wicg.io</a></h4>
 <h4 id="chromium-contributions-samsung-github-io-chromium-http-samsung-github-io-chromium-">Chromium contributions — <a href="http://samsung.github.io/Chromium/">samsung.github.io/Chromium/</a></h4>
 </section>
   </div>
-  <div class="slide hidden  bg-buzz-bye bg-fade" id="slide-43">
+  <div class="slide hidden  bg-buzz-bye bg-fade" id="slide-44">
     <section class="slide-content"><h1 id="thanks-">Thanks! 🙏</h1>
 <h2 id="-poshaughnessy-https-twitter-com-poshaughnessy-"><a href="https://twitter.com/poshaughnessy">@poshaughnessy</a></h2>
 <h2 id="-samsunginternet-https-twitter-com-samsunginternet-"><a href="https://twitter.com/samsunginternet">@samsunginternet</a></h2>

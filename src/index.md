@@ -110,7 +110,7 @@ controls: false
 
 <div class="caption">[outweb.io](https://outweb.io)</div>
 
--- bg-buzz-nasa bg-fade beyond
+-- bg-buzz-nasa bg-fade beyond beyond-small
 
 ## Beyond the browser tab
 #### with
@@ -337,6 +337,8 @@ navigator.bluetooth.requestDevice({
 # WebVR
 
 <div class="credit">[Kevin Harber](https://www.flickr.com/photos/kevharb/) via [Flickr](https://www.flickr.com/photos/kevharb/3065077415/)</div>
+
+-- bg-samsung-internet-for-gear-vr
 
 -- iframe
 
