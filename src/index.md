@@ -250,6 +250,28 @@ self.addEventListener('fetch', ...);
 <!-- ![Push notification anti-pattern](images/push-bad.jpg) -->
 <!-- <div class="caption">*Please* keep it [timely, relevant and precise!](https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/)</div> -->
 
+-- beyond-small
+
+### Beyond clunky checkout forms
+#### with
+## Web Payments
+
+<div class="left" style="width:58%; font-size:0.9em;">
+<pre style="display:block;"><code class="lang-javascript"><span class="hljs-keyword">new</span> PaymentRequest(methodData, details)
+  .show()
+  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">uiResult</span>) </span>{
+    processPayment(uiResult);
+  })
+  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
+    handlePaymentError(error);
+  });</code></pre>
+</div>
+<div class="right" style="width:38%">
+  <img alt="Payment Request example" src="images/payment-request-crop.png" style="margin:0 0 0 10px">
+</div>
+
+<div class="caption">[bit.ly/how-to-take-web-payments](http://bit.ly/how-to-take-web-payments)</div>
+
 -- bg-buzz4 bg-fade beyond
 
 ## Beyond the digital world
@@ -285,18 +307,15 @@ self.addEventListener('fetch', ...);
 ```javascript
 navigator.bluetooth.requestDevice({
   filters: [{
-    name: 'SomeAmazingRobot'
-  }],
-  optionalServices: ['battery_service']
+    namePrefix: 'Travis'
+  }]
 })
 ...
 ```
 
 <div class="corner-logos">![Chrome](images/chrome.png)</div>
 
---
-
-![Bluetooth pairing prompt](images/bluetooth-pairing-prompt.png)
+<!--![Bluetooth pairing prompt](images/bluetooth-pairing-prompt.png)-->
 
 <!-- ```javascript -->
 <!--  ... -->
@@ -360,6 +379,13 @@ navigator.bluetooth.requestDevice({
 
 -- img-with-caption
 
+[![A-Painting by feiss](images/apainter-feiss.png)](https://github.com/aframevr/a-painter/issues/99)
+
+<div class="caption">Via the [A-Frame Gallery](https://github.com/aframevr/a-painter/issues/99)</div>
+
+
+-- img-with-caption
+
 ![Real and virtual audiences for Ada's WebVR talk](images/metaverse-tweet.png)
 
 <div class="caption">[&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards](https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794)</div>
@@ -368,90 +394,68 @@ navigator.bluetooth.requestDevice({
 
 <!-- Remember to say it includes the polyfill for Cardboard -->
 
--- bg-lights-of-city
+<!-- -- bg-lights-of-city -->
 
-```html
-<script src="aframe.js"></script>
-...
-<a-scene>
-  <a-sphere position="0 1.25 -1" radius="1.25" 
-            color="#EF2D5E"></a-sphere>
-  <a-box position="-1 0.5 1" rotation="0 45 0" 
-         color="#4CC3D9"></a-box>
-  <a-cylinder position="1 0.75 1" radius="0.5" 
-              color="#FFC65D"></a-cylinder>
-  <a-plane rotation="-90 0 0" width="4" height="4" 
-            color="#7BC8A4"></a-plane>
-  <a-sky color="#ECECEC"></a-sky>
-</a-scene>
-```
+<!-- ```html
+<!-- <script src="aframe.js"></script>
+<!-- ...
+<!-- <a-scene>
+<!--   <a-sphere position="0 1.25 -1" radius="1.25" 
+<!--             color="#EF2D5E"></a-sphere>
+<!--   <a-box position="-1 0.5 1" rotation="0 45 0" 
+<!--          color="#4CC3D9"></a-box>
+<!--   <a-cylinder position="1 0.75 1" radius="0.5" 
+<!--               color="#FFC65D"></a-cylinder>
+<!--   <a-plane rotation="-90 0 0" width="4" height="4" 
+<!--             color="#7BC8A4"></a-plane>
+<!--   <a-sky color="#ECECEC"></a-sky>
+<!-- </a-scene>
+<!-- ```
 
-<div class="caption">[aframe.io](https://aframe.io)</div>
+<!-- <div class="caption">[aframe.io](https://aframe.io)</div>
 
--- iframe
+<!-- -- iframe -->
 
-<iframe src="demos/aframe-basic/index.html" scrolling="no" width="90%" height="90%" style="margin-top:5vh"></iframe>
+<!-- <iframe src="demos/aframe-basic/index.html" scrolling="no" width="90%" height="90%" style="margin-top:5vh"></iframe> -->
 
 <!-- ## Browser enthusiasm (so far) -->
 <!-- ![WebVR browser interest](images/webvr-browser-enthusiasm.png) -->
 <!-- <div class="caption">[iswebvrready.org](https://iswebvrready.org/)</div> -->
 
--- beyond-small
+<!-- -- beyond-small -->
 
-### Beyond clunky checkout forms
-#### with
-## Web Payments
+<!-- ### Beyond network downtime -->
+<!-- #### with -->
+<!-- ## Background sync -->
 
-<div class="left" style="width:58%; font-size:0.9em;">
-<pre style="display:block;"><code class="lang-javascript"><span class="hljs-keyword">new</span> PaymentRequest(methodData, details)
-  .show()
-  .then(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">uiResult</span>) </span>{
-    processPayment(uiResult);
-  })
-  .catch(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">error</span>) </span>{
-    handlePaymentError(error);
-  });</code></pre>
-</div>
-<div class="right" style="width:38%">
-  <img alt="Payment Request example" src="images/payment-request-crop.png" style="margin:0 0 0 10px">
-</div>
+<!-- ```javascript -->
+<!-- // Register a one-off sync -->
+<!-- navigator.serviceWorker.ready.then(function(swReg) { -->
+<!--     return swReg.sync.register('myLovelySync'); -->
+<!-- }); -->
 
-<div class="caption">[bit.ly/how-to-take-web-payments](http://bit.ly/how-to-take-web-payments)</div>
+<!-- // service-worker.js -->
+<!-- self.addEventListener('sync', function(event) { -->
+<!--   if (event.tag == 'myLovelySync') { -->
+<!--     ... -->
+<!-- ``` -->
 
--- beyond-small
+<!-- <div class="corner-logos">![Chrome](images/chrome.png)</div> -->
 
-### Beyond network downtime
-#### with
-## Background sync
+<!-- -- beyond-small -->
 
-```javascript
-// Register a one-off sync
-navigator.serviceWorker.ready.then(function(swReg) {
-    return swReg.sync.register('myLovelySync');
-  });
+<!-- ### Beyond single origin caching -->
+<!-- #### with -->
+<!-- ## Foreign fetch -->
 
-// service-worker.js
-self.addEventListener('sync', function(event) {
-  if (event.tag == 'myLovelySync') {
-    ...
-```
+<!-- ``` -->
+<!-- Link: </service-worker.js>; rel="serviceworker" -->
+<!-- Origin-Trial: token_obtained_from_signup -->
+<!-- ``` -->
 
-<div class="corner-logos">![Chrome](images/chrome.png)</div>
+<!-- [bit.ly/foreign-fetch](http://bit.ly/foreign-fetch) -->
 
--- beyond-small
-
-### Beyond single origin caching
-#### with
-## Foreign fetch
-
-```
-Link: </service-worker.js>; rel="serviceworker"
-Origin-Trial: token_obtained_from_signup
-```
-
-[bit.ly/foreign-fetch](http://bit.ly/foreign-fetch)
-
-<div class="corner-logos">![Chrome](images/chrome.png)</div>
+<!-- <div class="corner-logos">![Chrome](images/chrome.png)</div> -->
 
 -- bg-buzz6 bg-fade beyond-browser-compare
 
