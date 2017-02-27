@@ -145,6 +145,8 @@ controls: false
 }
 ```
 
+<div class="corner-logos">![Chrome](images/chrome.png) ![Samsung Internet](images/sbrowser5.0.png) ![Opera](images/opera.png)<img class="grey-out" src="images/firefox.png" alt="Firefox on the way"></div>
+
 -- img-with-caption four-images
 
 ![Add to homescreen (1)](images/snapwat-android-a2h-1.png) ![Add to homescreen (2)](images/snapwat-android-a2h-2.png) ![Add to homescreen (3)](images/snapwat-android-a2h-3.png) ![Add to homescreen (4)](images/snapwat-android-a2h-4.png)
