@@ -247,8 +247,7 @@ pre {
 
 table td,
 table th {
-  padding-right: 3em;
-  text-align: left;
+  padding: 0 2em;
 }
 
 .progress {
@@ -767,4 +766,33 @@ pre .xml .cdata {
 .align-top .slide-content img {
   position: relative;
   top: 0;
+}
+
+.highlight-code ul {
+  color: #aaa;
+}
+
+.highlight-code code {
+  color: #b3a0ff;
+}
+
+.manifest-code pre {
+  min-width: 60%;
+}
+
+.manifest-code .lang-json {
+  font-size: 0.9em;
+}
+
+.three-images img {
+  max-width: 30%;
+  padding: 0 10px;
+}
+
+.beyond-browser-compare table {
+  margin: 0 auto 1em auto;
+}
+
+.beyond-browser-compare td {
+  text-align: center;
 }

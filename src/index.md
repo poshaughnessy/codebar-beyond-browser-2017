@@ -30,23 +30,17 @@ controls: false
 
 ![StatCounter mobile vs desktop graph](images/internet_usage_2009_2016_ww.png)
 
---
+<!-- ![xkcd cartoon, Mac/PC](images/xkcd_mac_pc.png) -->
+<!-- <div class="credit">[xkcd](http://xkcd.com/934/)</div> -->
 
-![xkcd cartoon, Mac/PC](images/xkcd_mac_pc.png)
+<!-- img-with-caption -->
 
-<div class="credit">[xkcd](http://xkcd.com/934/)</div>
+<!-- ![comScore time spent](images/comscore-time-spent.png) -->
 
--- img-with-caption
+<!-- <div class="caption">[Reports](http://venturebeat.com/2013/04/03/the-mobile-war-is-over-and-the-app-has-won-80-of-mobile-time-spent-in-apps/) [suggest](http://flurrymobile.tumblr.com/post/127638842745/seven-years-into-the-mobile-revolution-content-is) 80%-90% of time is spent in apps</div> -->
 
-![comScore time spent](images/comscore-time-spent.png)
-
-<div class="caption">[Reports](http://venturebeat.com/2013/04/03/the-mobile-war-is-over-and-the-app-has-won-80-of-mobile-time-spent-in-apps/) [suggest](http://flurrymobile.tumblr.com/post/127638842745/seven-years-into-the-mobile-revolution-content-is) 80%-90% of time is spent in apps</div>
-
---
-
-![comScore app downloads](images/comscore-app-downloads.png)
-
-<div class="credit">[comScore](http://www.comscore.com/Insights/Presentations-and-Whitepapers/2016/The-2016-US-Mobile-App-Report) via [recode.net](http://www.recode.net/2016/9/16/12933780/average-app-downloads-per-month-comscore)</div>
+<!-- ![comScore app downloads](images/comscore-app-downloads.png) -->
+<!-- <div class="credit">[comScore](http://www.comscore.com/Insights/Presentations-and-Whitepapers/2016/The-2016-US-Mobile-App-Report) via [recode.net](http://www.recode.net/2016/9/16/12933780/average-app-downloads-per-month-comscore)</div> -->
 
 --
 
@@ -94,13 +88,15 @@ controls: false
 
 [![Browser representation at PWA Dev Summit](images/pwa-dev-summit.png)](https://twitter.com/nicoinch/status/745216197004754944)
 
+-- bg-white
+
+[![Twitter moved to a PWA](images/twitter-pwa.png)](https://twitter.com/necolas/status/829128165314306048)
+
 -- img-with-caption
 
-TODO Twitter PWA
+[![podle.audio](images/podle-samsunginternet5_2.png)](https://podle.audio)
 
--- img-with-caption
-
-TODO Another favourite PWA
+<div class="caption">[podle.audio](https://podle.audio)</div>
 
 -- img-with-caption
 
@@ -114,9 +110,48 @@ TODO Another favourite PWA
 
 <div class="caption">[outweb.io](https://outweb.io)</div>
 
+-- bg-buzz-nasa bg-fade beyond
+
+## Beyond tabs
+#### with
+# Web App Manifest
+
+-- manifest-code
+
+```html
+<link rel="manifest" href="/manifest.json">
+```
+
+```json
+{
+  "name": "Podle",
+  "icons": [
+    {
+      "src": "/static/icon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/static/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "white",
+  "theme_color": "#4E3F30",
+  ...
+}
+```
+
+-- img-with-caption
+
+<img src="images/snapwat-homescreen-icon.gif" style="min-width: 400px" alt="Samsung Internet PWA icons"/>
+
+<div class="caption">[pwas.samsunginter.net](https://pwas.samsunginter.net)</div>
+
 -- bg-buzz2 bg-fade beyond
 
-## Beyond the browser tab
+## Beyond online
 #### with
 # Service Workers
 
@@ -124,134 +159,42 @@ TODO Another favourite PWA
 
 -- img-with-caption
 
-TODO diagram explaining service workers
+![Service worker diagram](images/service-worker-large-mod.png)
 
--- img-with-caption
-
-[![isserviceworkerready](images/isserviceworkerready.png)](https://jakearchibald.github.io/isserviceworkerready/)
-
-<div class="caption">[jakearchibald.github.io/isserviceworkerready/](https://jakearchibald.github.io/isserviceworkerready/)</div>
-
--- bg-safari bg-fade beyond
-
-## What about 
-# Safari?
-
--- bg-buzz-laser progressive-enhancement bg-fade
-
-## Progressive enhancement
-
-```javascript
-if ('serviceWorker' in navigator) {
-  ...
-}
-```
-
-<div class="credit">[Joanne Lummy](https://www.flickr.com/photos/joanne_lummy) via [Flickr](https://www.flickr.com/photos/joanne_lummy/5202018462)</div>
-
--- bg-buzz-nasa progressive-enhancement bg-fade
-
-## Offline first
-
-#### Where service workers are available, you can think of the 
-###*network* as an enhancement!
-
-<div class="credit">[NASA HQ](https://www.flickr.com/photos/nasahqphoto/) via [Flickr](https://www.flickr.com/photos/nasahqphoto/6881402904)</div>
-
---
-
-![Chrome service worker internals](images/chrome-service-worker-internals.png)
+<div class="caption">From ["The (Not So) Secret Powers Of The Mobile Browser" by Stéphanie Walter](https://www.smashingmagazine.com/2016/12/the-not-so-secret-powers-of-the-mobile-browser/)</div>
 
 --
 
 ```javascript
-if ('serviceWorker' in navigator) {
+navigator.serviceWorker.register('/service-worker.js');
 
-  navigator.serviceWorker.register('/sw.js')
-    .then(function() {
-      console.log('Service worker successfully registered');
-    })
-    .catch(function(err) {
-      console.error('Service worker failed to register', err);
-    });
+// Inside service-worker.js...
 
-}
-```
+// Good for caching on install ("pre-cache")
+self.addEventListener('install', ...);
 
---
+// Good time to clear out old caches
+self.addEventListener('activate', ...);
 
-```javascript
-// service-worker.js
-
-// NB. URLs, not filepaths!
-var RESOURCES = ['/images/logo.png', ...];
-
-self.addEventListener('install', function(event) {
-  function onInstall () {
-    return caches.open(CACHE_NAME)
-      .then(function(cache) {
-        return cache.addAll(RESOURCES);
-      });
-  }
-);
-```
-
---
-
-```javascript
-self.addEventListener('install', function(event) {
-  // Waits for clients using old SWs to be closed and/or 
-  // `event.waitUntil()`, unless `skipWaiting()`.
-});
-
-self.addEventListener('activate', function(event) {
-  // Good time to clear out old caches.
-});
-
-self.addEventListener('fetch', function(event) {
-  // Intercepted a fetch!
-  event.respondWith(new Response('Hello world!'));
-});
+// Intercept network requests
+self.addEventListener('fetch', ...);
 ```
 
 <div class="caption">[Using Service Workers - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)</div>
 
---
+-- highlight-code
 
 ## sw-toolbox
 
-* “network first”, then fallback to cache
+* `networkFirst` (fallback to cache)
+* `cacheFirst` (fallback to network)
+* `fastest` (serve whichever comes back first)
+* `networkOnly`
+* `cacheOnly`
 
-```javascript
-importScripts('/sw-toolbox/sw-toolbox.js');
+<div class="caption">[github.com/GoogleChrome/sw-toolbox](https://github.com/GoogleChrome/sw-toolbox)</div>
 
-toolbox.router.get('/images/*', toolbox.networkFirst, {
-	networkTimeoutSeconds: 10
-});
-```
-
---
-
-* “cache first”, then fallback to network
-
-```javascript
-toolbox.router.get('/images/*', toolbox.cacheFirst);
-```
-
---
-
-* “fastest” — serve whichever comes back first
-
-```javascript
-toolbox.router.get('/profile', toolbox.fastest);
-```
-<div></div>
-* “network only”
-* “cache only”
-
-<!--## &lt;a download&gt; requests bypass SW-->
-<!--<a href="https://bugs.chromium.org/p/chromium/issues/detail?id=468227#c13"><img src="images/chromium-bug.png" alt="Chromium bug" width="75%"/></a>-->
-<!--<div class="corner-logos">![Chrome](images/chrome.png) ![Samsung Internet](images/sbrowser5.0.png)</div>-->
+<!-- ![Chrome service worker internals](images/chrome-service-worker-internals.png) -->
 
 -- bg-buzz3 bg-fade beyond
 
@@ -277,19 +220,13 @@ toolbox.router.get('/profile', toolbox.fastest);
 
 <!-- [bit.ly/web-fundamentals-push-notifications](http://bit.ly/web-fundamentals-push-notifications) -->
 
---
+<!-- ![Podle push debugging](images/podle-push-debug.png) -->
 
-![Podle push debugging](images/podle-push-debug.png)
+<!-- ![Podle push debugging](images/podle-push-debug2.png) -->
 
---
-
-![Podle push debugging](images/podle-push-debug2.png)
-
--- img-with-caption
-
-![Push notification anti-pattern](images/push-bad.jpg)
-
-<div class="caption">*Please* keep it [timely, relevant and precise!](https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/)</div>
+<!-- img-with-caption -->
+<!-- ![Push notification anti-pattern](images/push-bad.jpg) -->
+<!-- <div class="caption">*Please* keep it [timely, relevant and precise!](https://developers.google.com/web/fundamentals/engage-and-retain/push-notifications/)</div> -->
 
 -- bg-buzz4 bg-fade beyond
 
@@ -303,25 +240,11 @@ toolbox.router.get('/profile', toolbox.fastest);
 
 <!-- <div class="corner-logos">![Chrome](images/chrome.png) ![Samsung Internet beta](images/sbrowser5.2-beta.png) ![Firefox](images/firefox.png)</div> -->
 
---
+-- three-images img-with-caption
 
-![Physical Web](images/physical-web-google.png)
+![Physical Web](images/physical-web-google.png) ![Project Magnet](images/project-magnet.png) ![CloseBy](images/closeby.png)
 
-<div class="corner-logos">![Chrome](images/chrome.png)</div>
-
-<!-- Not to be confused with Nearby... -->
-
---
-
-![Project Magnet](images/project-magnet.png)
-
-<div class="corner-logos grey-out">![Firefox](images/firefox.png)</div>
-
---
-
-![CloseBy](images/closeby.png)
-
-<div class="corner-logos">![Samsung Internet beta](images/sbrowser5.2-beta.png)</div>
+<div class="caption">Google's [Physical Web](https://support.google.com/chrome/answer/6239299), Mozilla's [Project Magnet](https://github.com/mozilla-magnet/magnet), Samsung's [CloseBy](https://samsunginter.net/docs/closeby.html)</div>
 
 -- img-with-caption
 
@@ -353,30 +276,26 @@ navigator.bluetooth.requestDevice({
 
 ![Bluetooth pairing prompt](images/bluetooth-pairing-prompt.png)
 
---
+<!-- ```javascript -->
+<!--  ... -->
+<!--  .then(device => device.gatt.connect()) -->
+<!--  .then(server => server.getPrimaryService('battery_service')) -->
+<!--  .then(service => service.getCharacteristic('battery_level')) -->
+<!-- ``` -->
 
-```javascript
-  ...
-  .then(device => device.gatt.connect())
-  .then(server => server.getPrimaryService('battery_service'))
-  .then(service => service.getCharacteristic('battery_level'))
-```
+<!-- ```javascript -->
+<!--  ... -->
+<!--  .then(characteristic => { -->
+<!--    // Read battery level -->
+<!--    return characteristic.readValue(); -->
+<!--  }) -->
+<!--  .then(value => { -->
+<!--    var batteryLevel = value.getUint8(0); -->
+<!--    console.log('Battery level', batteryLevel); -->
+<!--  }); -->
+<!-- ``` -->
 
---
-
-```javascript
-  ...
-  .then(characteristic => {
-    // Read battery level
-    return characteristic.readValue();
-  })
-  .then(value => {
-    var batteryLevel = value.getUint8(0);
-    console.log('Battery level', batteryLevel);
-  });
-```
-
-<div class="caption">[bit.ly/chrome-bluetooth-guide](http://bit.ly/chrome-bluetooth-guide)</div>
+<!-- <div class="caption">[bit.ly/chrome-bluetooth-guide](http://bit.ly/chrome-bluetooth-guide)</div> -->
 
 --
 
@@ -391,14 +310,13 @@ navigator.bluetooth.requestDevice({
 
 ## How I'm controlling these slides
 
-* [Bleno](https://github.com/sandeepmistry/bleno) combined with Web Sockets *(peripheral - Mac)*
-* Web Bluetooth *(central - Chrome for Android)*
+* Web Bluetooth
+* Web Sockets
+* [Bleno](https://github.com/sandeepmistry/bleno) (Node)
 
--- img-with-caption
-
-![puck.js](images/puckjs.jpg)
-
-<div class="caption">[puck.js](http://www.puck-js.com/)</div>
+<!-- img-with-caption -->
+<!-- ![puck.js](images/puckjs.jpg) -->
+<!-- <div class="caption">[puck.js](http://www.puck-js.com/)</div> -->
 
 <!-- TODO if time replace with my video! https://twitter.com/poshaughnessy/status/808065469001375744 -->
 
@@ -418,9 +336,11 @@ navigator.bluetooth.requestDevice({
 
 -- img-with-caption
 
-![A-Frame site](images/aframe-site.png)
+![Audience for Ada's WebVR talk](images/ada-webvr-crowd.jpg)
 
-#### [aframe.io](https://aframe.io)
+<div class="caption">[&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards](https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794)</div>
+
+<!-- And you can combine with WebRTC... -->
 
 <!-- Remember to say it includes the polyfill for Cardboard -->
 
@@ -428,11 +348,7 @@ navigator.bluetooth.requestDevice({
 
 ```html
 <script src="aframe.js"></script>
-```
-
--- bg-lights-of-city
-
-```html
+...
 <a-scene>
   <a-sphere position="0 1.25 -1" radius="1.25" 
             color="#EF2D5E"></a-sphere>
@@ -446,25 +362,15 @@ navigator.bluetooth.requestDevice({
 </a-scene>
 ```
 
+<div class="caption">[aframe.io](https://aframe.io)</div>
+
 -- iframe
 
 <iframe src="demos/aframe-basic/index.html" scrolling="no" width="90%" height="90%" style="margin-top:5vh"></iframe>
 
---
-
-## Browser enthusiasm (so far)
-
-![WebVR browser interest](images/webvr-browser-enthusiasm.png)
-
-<div class="caption">[iswebvrready.org](https://iswebvrready.org/)</div>
-
--- img-with-caption
-
-![Audience for Ada's WebVR talk](images/ada-webvr-crowd.jpg)
-
-<div class="caption">[&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards](https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794)</div>
-
-<!-- And you can combine with WebRTC... -->
+<!-- ## Browser enthusiasm (so far) -->
+<!-- ![WebVR browser interest](images/webvr-browser-enthusiasm.png) -->
+<!-- <div class="caption">[iswebvrready.org](https://iswebvrready.org/)</div> -->
 
 -- beyond-small
 
@@ -523,9 +429,25 @@ Origin-Trial: token_obtained_from_signup
 
 <div class="corner-logos">![Chrome](images/chrome.png)</div>
 
--- bg-buzz6 bg-fade
+-- bg-buzz6 bg-fade beyond-browser-compare
 
-# Beyond the *Browser*
+## Beyond the *Browser*
+
+<table>
+  <tr>
+    <td>
+      <img src="images/iphone-safari-web-browser.png"/>      
+    </td>
+    <td>
+      <img src="images/web-2017-annotated.png"/>
+    </td>
+  </tr>
+  <tr>
+    <td>2007</td>
+    <td>2017</td>
+  </tr>
+</table>
+
 
 <div class="caption">[bit.ly/is-browser-still-the-right-word](https://medium.com/samsung-internet-dev/is-browser-still-the-right-word-6815f93b866c)</div>
 
