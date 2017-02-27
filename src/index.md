@@ -92,11 +92,9 @@ controls: false
 
 [![Twitter moved to a PWA](images/twitter-pwa.png)](https://twitter.com/necolas/status/829128165314306048)
 
--- img-with-caption
-
-[![podle.audio](images/podle-samsunginternet5_2.png)](https://podle.audio)
-
-<div class="caption">[podle.audio](https://podle.audio)</div>
+<!-- img-with-caption -->
+<!--[![podle.audio](images/podle-samsunginternet5_2.png)](https://podle.audio)-->
+<!--<div class="caption">[podle.audio](https://podle.audio)</div>-->
 
 -- img-with-caption
 
