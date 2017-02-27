@@ -808,3 +808,11 @@ pre .xml .cdata {
 .beyond-browser-compare td {
   text-align: center;
 }
+
+.bg-buzz-bye h4 {
+  margin: 2em 0;
+}
+
+.bg-buzz-bye h3 {
+  margin-bottom: 0.5em;
+}

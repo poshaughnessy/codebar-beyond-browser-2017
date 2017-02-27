@@ -477,8 +477,12 @@ Origin-Trial: token_obtained_from_signup
 
 # Thanks! 🙏
 
-## [@poshaughnessy](https://twitter.com/poshaughnessy)
+#### **For a prize!** How many Buzz Lightyears were in this presentation? 
 
-## [@samsunginternet](https://twitter.com/samsunginternet)
+<!-- Shh! The secret answer is: 8 -->
+
+### [@poshaughnessy](https://twitter.com/poshaughnessy)
+
+### [@samsunginternet](https://twitter.com/samsunginternet)
 
 <div class="credit">[Bridgette Wynn](https://www.flickr.com/photos/brwynn/) via [Flickr](https://www.flickr.com/photos/brwynn/4870133844/in/photolist-8qmH7U-a27zM3-7h1ntQ-FMpJ5V-8pVgfS-6fQV4k-8offGv-dLmtz1-cfnyyj-9pUG6t-7Q6mc8-dz82Ks-8AQuwa-95Zimm-8rDw4L-8AVpKL-9dhs6t-6FsRjV-8rDyvs-9qam69-8dBd7t-6FsRj6-92qxGP-4nkESf-8A1fhL-98ZQP6-bWpBQ8-95WfNF-6FwY8w-b7JpX2-ybecj-95WfRH-8efWsX-bRjj8e-9nesie-6FwY6N-oNMUh-a7CFuW-8AUEyj-qhHEZy-9cGQP9-qhGZcf-ortUC5-8C5CKb-7SynPk-8rDus3-95w2dP-8wsvSY-fFat1y-8KRKhJ)</div>
