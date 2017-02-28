@@ -177,27 +177,30 @@ document.body.addEventListener('touchend', function(e) {
 
 /**
  * Web Sockets (Faye) added by Peter - for remote control
+ * For running locally only
  */
+if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+  var wsClient = new Faye.Client('http://localhost:9000/ws');
 
-var wsClient = new Faye.Client('http://localhost:9000/ws');
+  console.log('wsClient', wsClient);
 
-console.log('wsClient', wsClient);
-
-wsClient.subscribe('/remote', function(message) {
-  console.log('Remote control command: ' + message);
-  switch (message) {
-    case 1: {
-      // Left
-      navigate(-1);
-      break;
+  wsClient.subscribe('/remote', function(message) {
+    console.log('Remote control command: ' + message);
+    switch (message) {
+      case 1: {
+        // Left
+        navigate(-1);
+        break;
+      }
+      case 2: {
+        // Right
+        navigate(1);
+        break;
+      }
     }
-    case 2: {
-      // Right
-      navigate(1);
-      break;
-    }
-  }
-});
+  });
+}
+
 
 /* Service worker registration - added by Peter */
 
