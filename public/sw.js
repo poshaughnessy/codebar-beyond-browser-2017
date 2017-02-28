@@ -1,6 +1,6 @@
 'use strict';
 
-importScripts('/lib/sw-toolbox.js');
+importScripts('lib/sw-toolbox.js');
 
 toolbox.precache(['/']);
 
