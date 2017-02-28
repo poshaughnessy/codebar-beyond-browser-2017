@@ -1,7 +1,7 @@
 title: Beyond the Browser (Codebar)
 output: public/index.html
 theme: peter-theme
-controls: false
+controls: true
 
 -- bg-buzz1 bg-fade
 
