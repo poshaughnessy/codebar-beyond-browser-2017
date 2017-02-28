@@ -18,7 +18,7 @@ controls: true
 
 -- align-top img-with-caption
 
-![Samsung Internet icon on homescreen](images/samsung-internet-phone-blur.jpg)
+![Samsung Internet icon on homescreen](images/samsung-internet-phone-blur.png)
 
 [@samsunginternet](https://twitter.com/samsunginternet)
 
