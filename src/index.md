@@ -167,7 +167,7 @@ controls: true
 
 -- img-with-caption
 
-<img src="images/snapwat-homescreen-icon.gif" style="min-width: 400px" alt="Samsung Internet PWA icons"/>
+<img src="images/snapwat-homescreen-icon.gif" style="min-height: 80vh" alt="Samsung Internet PWA icons"/>
 
 <div class="caption">[pwas.samsunginter.net](https://pwas.samsunginter.net)</div>
 

@@ -537,12 +537,12 @@ pre .xml .cdata {
 
 .corner-logos {
   position: absolute;
-  bottom: 25px;
-  right: 10px;
+  bottom: 0.5em;
+  right: 0.5em;
 }
 
 .corner-logos img {
-  max-width: 100px;
+  max-width: 3em;
 }
 
 /* For background images so we can apply filters */
