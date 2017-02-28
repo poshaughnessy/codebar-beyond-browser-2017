@@ -298,7 +298,7 @@ self.addEventListener('fetch', ...);
 
 --
 
-![CloseBy](images/closeby-notification.png)
+![CloseBy](images/closeby-notification.jpg)
 
 -- 
 
@@ -386,7 +386,7 @@ navigator.bluetooth.requestDevice({
 
 -- img-with-caption
 
-![Real and virtual audiences for Ada's WebVR talk](images/metaverse-tweet.png)
+![Real and virtual audiences for Ada's WebVR talk](images/metaverse-tweet.jpg)
 
 <div class="caption">[&ldquo;Wow that was some night in VR!&rdquo; - Ada Rose Edwards](https://medium.com/samsung-internet-dev/wow-that-was-some-night-in-vr-ba091be38794)</div>
 
