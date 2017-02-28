@@ -573,6 +573,7 @@ pre .xml .cdata {
 }
 /* Background image to render things on top of */
 .slide.bg-fade:before {
+  -webkit-filter: blur(2px) grayscale(0.5) brightness(0.2); 
   filter: blur(2px) grayscale(0.5) brightness(0.2);
 }
 .slide-content {
@@ -608,6 +609,7 @@ pre .xml .cdata {
 
 .slide.bg-buzz1:before {
   background-image: url(images/buzz-flickr_armadillo444.jpg);
+  -webkit-filter: blur(2px) grayscale(0.5) brightness(0.175);
   filter: blur(2px) grayscale(0.5) brightness(0.175);
 }
 
@@ -661,16 +663,8 @@ pre .xml .cdata {
 
 .slide.bg-best-of-both:before {
   background-image: url(images/hovis-best-of-both.jpg);
+  -webkit-filter: blur(2px) grayscale(0.5) brightness(0.125);
   filter: blur(2px) grayscale(0.5) brightness(0.125);
-}
-
-.slide.bg-safari:before {
-  background-image: url(images/safari-flickr_triciahealey.jpg);
-  filter: blur(2px) grayscale(0.5) brightness(0.22);
-}
-
-.slide.bg-offline:before {
-  background-image: url(images/ethernet-flickr_wikidave.jpg);
 }
 
 .slide.bg-aframe:before {
@@ -755,6 +749,7 @@ pre .xml .cdata {
 }
 
 .grey-out {
+  -webkit-filter: grayscale(1);
   filter: grayscale(1);
 }
 
