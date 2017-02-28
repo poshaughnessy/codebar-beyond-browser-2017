@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#987fff">
   <title>BTB Codebar</title>
   <style type="text/css">
     /*
@@ -824,7 +825,7 @@ pre .xml .cdata {
 <div class="credit"><a href="https://www.flickr.com/photos/armadillo444/">Carlos</a> via <a href="https://www.flickr.com/photos/armadillo444/2901378790">Flickr</a></div></section>
   </div>
   <div class="slide hidden  align-top img-with-caption" id="slide-2">
-    <section class="slide-content"><p><img src="images/samsung-internet-phone-blur.png" alt="Samsung Internet icon on homescreen"></p>
+    <section class="slide-content"><p><img src="images/samsung-internet-phone-blur.jpg" alt="Samsung Internet icon on homescreen"></p>
 <p><a href="https://twitter.com/samsunginternet">@samsunginternet</a></p>
 </section>
   </div>
@@ -1445,6 +1446,20 @@ wsClient.subscribe('/remote', function(message) {
     }
   }
 });
+
+/* Service worker registration - added by Peter */
+
+if (navigator.serviceWorker) {
+
+  navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+      console.log('Registration successful', registration.scope);
+    })
+    .catch(function(error) {
+      console.log('Failed - service worker not installed', error);
+    });
+
+}
 
   </script>
 </body>
