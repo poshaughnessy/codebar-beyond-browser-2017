@@ -28,7 +28,7 @@ controls: true
 
 --
 
-![StatCounter mobile vs desktop graph](images/internet_usage_2009_2016_ww.png)
+![StatCounter mobile vs desktop graph](images/internet_usage_2009_2016_ww.jpg)
 
 <!-- ![xkcd cartoon, Mac/PC](images/xkcd_mac_pc.png) -->
 <!-- <div class="credit">[xkcd](http://xkcd.com/934/)</div> -->
@@ -44,7 +44,7 @@ controls: true
 
 --
 
-![comScore mobile web reach](images/comscore-mobile-web-crop.png)
+![comScore mobile web reach](images/comscore-mobile-web-crop.jpg)
 
 -- bg-best-of-both bg-fade
 
@@ -80,17 +80,17 @@ controls: true
 
 --
 
-![Web nearing parity with native](images/web-native-parity.png)
+![Web nearing parity with native](images/web-native-parity.jpg)
 
 <div class="credit">[What Comes Next For The Web? - Paul Kinlan](https://www.youtube.com/watch?v=YJwrBbze_Ec)</div>
 
 -- bg-white
 
-[![Browser representation at PWA Dev Summit](images/pwa-dev-summit.png)](https://twitter.com/nicoinch/status/745216197004754944)
+[![Browser representation at PWA Dev Summit](images/pwa-dev-summit.jpg)](https://twitter.com/nicoinch/status/745216197004754944)
 
 -- bg-white
 
-[![Twitter moved to a PWA](images/twitter-pwa.png)](https://twitter.com/necolas/status/829128165314306048)
+[![Twitter moved to a PWA](images/twitter-pwa.jpg)](https://twitter.com/necolas/status/829128165314306048)
 
 <!-- img-with-caption -->
 <!-- [![podle.audio](images/podle-samsunginternet5_2.png)](https://podle.audio) -->
@@ -110,7 +110,7 @@ controls: true
 
 -- img-with-caption
 
-[![PWAs simply make sense](images/pwas-simply-make-sense.png)](https://cloudfour.com/thinks/progressive-web-apps-simply-make-sense/)
+[![PWAs simply make sense](images/pwas-simply-make-sense.jpg)](https://cloudfour.com/thinks/progressive-web-apps-simply-make-sense/)
 
 <div class="caption">[cloudfour.com/thinks/progressive-web-apps-simply-make-sense/](https://cloudfour.com/thinks/progressive-web-apps-simply-make-sense/)</div>
 
@@ -157,7 +157,7 @@ controls: true
 
 -- img-with-caption four-images
 
-![Add to homescreen (1)](images/snapwat-android-a2h-1.png) ![Add to homescreen (2)](images/snapwat-android-a2h-2.png) ![Add to homescreen (3)](images/snapwat-android-a2h-3.png) ![Add to homescreen (4)](images/snapwat-android-a2h-4.png)
+![Add to homescreen (1)](images/snapwat-android-a2h-1.png) ![Add to homescreen (2)](images/snapwat-android-a2h-2.png) ![Add to homescreen (3)](images/snapwat-android-a2h-3.jpg) ![Add to homescreen (4)](images/snapwat-android-a2h-4.png)
 
 <div class="caption">[developers.google.com/web/updates/2017/02/improved-add-to-home-screen](https://developers.google.com/web/updates/2017/02/improved-add-to-home-screen)</div>
 
@@ -236,7 +236,7 @@ self.addEventListener('fetch', ...);
 
 -- img-with-caption
 
-![Podle push notification](images/podle-push-notification.png)
+![Podle push notification](images/podle-push-notification.jpg)
 
 <div class="caption">[podle.audio](https://podle.audio)</div>
 
@@ -379,7 +379,7 @@ navigator.bluetooth.requestDevice({
 
 -- img-with-caption
 
-[![A-Painting by feiss](images/apainter-feiss.png)](https://github.com/aframevr/a-painter/issues/99)
+[![A-Painting by feiss](images/apainter-feiss.jpg)](https://github.com/aframevr/a-painter/issues/99)
 
 <div class="caption">Via the [A-Frame Gallery](https://github.com/aframevr/a-painter/issues/99)</div>
 
