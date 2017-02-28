@@ -203,7 +203,7 @@ wsClient.subscribe('/remote', function(message) {
 
 if (navigator.serviceWorker) {
 
-  navigator.serviceWorker.register('/sw.js')
+  navigator.serviceWorker.register('sw.js')
     .then(function(registration) {
       console.log('Registration successful', registration.scope);
     })
