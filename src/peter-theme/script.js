@@ -160,7 +160,7 @@ document.body.addEventListener('touchstart', function(e) {
 }, false);
 
 document.body.addEventListener('touchend', function(e) {
-  if (!e.touches || e.touches.length !== 1) {
+  if (!e.changedTouches || e.changedTouches.length !== 1) {
     return;
   }
   var touch = e.changedTouches[0];

@@ -22,7 +22,7 @@
 /* Theme Styles */
 body {
   font-family: 'Play', 'Helvetica', sans-serif;
-  font-size: 100%;
+  font-size: 80%;
   text-align: center;
   overflow: hidden;
   color: #fff;
@@ -442,7 +442,7 @@ pre .xml .cdata {
 }
 
 /* Media Queries */
-/* 640 x 480 is the default (1em) */
+/* 640 x 480 is the default (80%) */
 
 /* 800 x 600 */
 @media (min-width: 800px) and (min-height: 600px) {

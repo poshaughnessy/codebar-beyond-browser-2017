@@ -1,4 +1,4 @@
-title: Beyond the Browser (Codebar)
+title: BTB Codebar
 output: public/index.html
 theme: peter-theme
 controls: true
