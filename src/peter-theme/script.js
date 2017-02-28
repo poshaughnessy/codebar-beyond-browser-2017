@@ -198,3 +198,17 @@ wsClient.subscribe('/remote', function(message) {
     }
   }
 });
+
+/* Service worker registration - added by Peter */
+
+if (navigator.serviceWorker) {
+
+  navigator.serviceWorker.register('/sw.js')
+    .then(function(registration) {
+      console.log('Registration successful', registration.scope);
+    })
+    .catch(function(error) {
+      console.log('Failed - service worker not installed', error);
+    });
+
+}
